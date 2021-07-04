@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e73fd43c70e4e540b7aab2cc80cc253, type: 3}
-  m_Name: New Unit Test
+  m_Name: New Unit Test 1
   m_EditorClassIdentifier: 
-  _unitName: Unit
-  _unitFamily: 0
-  _unitElement: 1
+  _unitName: Unit 1
+  _unitFamily: 1
+  _unitElement: 2
   _life: 0
   _damage: 0
   _fireRate: 0
-  _manaLength: 0
+  _basicMesh: {fileID: 4300002, guid: 05495f8d2f8d91746a6bef216c28f5d9, type: 3}

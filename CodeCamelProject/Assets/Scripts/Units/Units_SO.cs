@@ -20,6 +20,22 @@ namespace Unit{
         [SerializeField] private int _damage = 0;
         [Tooltip("Time between two attacks")]
         [SerializeField] private float _fireRate = 0f;
+
+        [Header("Unit Asset")]
+        [Tooltip("the basic mesh of the unit. This mesh will be updated when the scriptable change")]
+        [SerializeField] private Mesh _basicMesh = null;
+
+
+
+        /// <summary>
+        /// Refresh all the data on the object
+        /// </summary>
+        /// <param name="baseObject"></param>
+        public void RefreshUnitData(GameObject baseObject){
+            //If there is a mesh link to the scriptable. Then the mesh on the object will change
+            if(_basicMesh != null) baseObject.GetComponent<MeshFilter>().sharedMesh = _basicMesh;
+            baseObject.name = "BaseUnit : " + _unitName;
+        }
     }
 
     /// <summary>
