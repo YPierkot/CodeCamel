@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Unit{
     [CreateAssetMenu(fileName = "Unit", menuName = "ScriptableObjects/Create New Unit")]
+    [CanEditMultipleObjects]
     public class Units_SO : ScriptableObject{
         [Header("Unit Info")]
         [Tooltip("Name of the Unit")]
@@ -20,21 +22,28 @@ namespace Unit{
         [SerializeField] private int _damage = 0;
         [Tooltip("Time between two attacks")]
         [SerializeField] private float _fireRate = 0f;
+        [Tooltip("Speed of the Unit when need to Move")]
+        [SerializeField] private float _moveSpeed;
 
         [Header("Unit Asset")]
         [Tooltip("the basic mesh of the unit. This mesh will be updated when the scriptable change")]
         [SerializeField] private Mesh _basicMesh = null;
 
-
-
         /// <summary>
-        /// Refresh all the data on the object
+        /// Get the stat of this ScriptableObject
         /// </summary>
         /// <param name="baseObject"></param>
-        public void RefreshUnitData(GameObject baseObject){
-            //If there is a mesh link to the scriptable. Then the mesh on the object will change
-            if(_basicMesh != null) baseObject.GetComponent<MeshFilter>().sharedMesh = _basicMesh;
-            baseObject.name = "BaseUnit : " + _unitName;
+        public UnitVariables GetStat(){
+            UnitVariables unitV = new UnitVariables();
+            unitV._unitName = this._unitName;
+            unitV._unitFamily = this._unitFamily;
+            unitV._unitElement = this._unitElement;
+            unitV._life = this._life;
+            unitV._damage = this._damage;
+            unitV._fireRate = this._fireRate;
+            unitV._moveSpeed = this._moveSpeed;
+            unitV._basicMesh = this._basicMesh;
+            return unitV;
         }
     }
 
@@ -59,5 +68,21 @@ namespace Unit{
         Water,
         Ground,
         Wind
+    }
+
+    /// <summary>
+    /// Variables of the scriptableObject
+    /// </summary>
+    public class UnitVariables{
+        public string _unitName;
+        public UnitsFamily _unitFamily;
+        public UnitsElement _unitElement;
+
+        public int _life;
+        public int _damage;
+        public float _fireRate;
+        public float _moveSpeed;
+
+        public Mesh _basicMesh;
     }
 }
