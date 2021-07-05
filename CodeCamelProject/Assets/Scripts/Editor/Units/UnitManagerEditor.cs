@@ -25,22 +25,28 @@ public class UnitManagerEditor : Editor{
     public override void OnInspectorGUI(){
         mySerObj.Update();
         Unit.UnitManager script = (Unit.UnitManager)target;
-        Unit.UnitVariables unitVar = script._unitScriptable.GetStat();
+
+        Unit.UnitVariables unitVar = new Unit.UnitVariables();
+        if(script._unitScriptable != null) unitVar = script._unitScriptable.GetStat();
 
         //Show the ScriptableObject Slot and a button to refresh the variable
         GUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
         EditorGUILayout.PropertyField(SOproperty, new GUIContent("Unit Scriptable"));
         mySerObj.ApplyModifiedProperties();
-        if(GUILayout.Button(new GUIContent(EditorGUIUtility.IconContent("d_Refresh", "Refresh all the data of this unit")), GUILayout.Width(30))){
-            if(script._unitScriptable != null) script.RefreshData();
-        }
-        if(GUILayout.Button(new GUIContent(EditorGUIUtility.IconContent("d_CollabEdit Icon", "Edit the scriptable of this Unit")), GUILayout.Width(30), GUILayout.Height(20))){
-            GameObject activObj = Selection.activeGameObject;
-            Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GetAssetPath(script._unitScriptable));
-            EditorApplication.ExecuteMenuItem("Assets/Properties...");
-            Selection.activeObject = activObj;
+        if(script._unitScriptable != null){
+            if(GUILayout.Button(new GUIContent(EditorGUIUtility.IconContent("d_Refresh", "Refresh all the data of this unit")), GUILayout.Width(30))){
+                if(script._unitScriptable != null) script.RefreshData();
+            }
+            if(GUILayout.Button(new GUIContent(EditorGUIUtility.IconContent("d_CollabEdit Icon", "Edit the scriptable of this Unit")), GUILayout.Width(30), GUILayout.Height(20))){
+                GameObject activObj = Selection.activeGameObject;
+                Selection.activeObject = AssetDatabase.LoadMainAssetAtPath(AssetDatabase.GetAssetPath(script._unitScriptable));
+                EditorApplication.ExecuteMenuItem("Assets/Properties...");
+                Selection.activeObject = activObj;
+            }
         }
         GUILayout.EndHorizontal();
+
+        if(script._unitScriptable == null) return;
 
         Space(5);
         GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));

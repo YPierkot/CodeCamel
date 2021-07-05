@@ -7,21 +7,13 @@ namespace Unit{
     public class UnitManager : MonoBehaviour{
         #region Variables
         public Units_SO _unitScriptable = null;
-        Units_SO _lastUnitSO = null;
 
         [Header("Unit Stat")]
         //LIFE
-        //life of the player 
         [SerializeField] private float _unitLife = 0f;
-
         //MANA
-        //mana gain during party
         [SerializeField] private float _manaGain = 0f;
-        //mana needed to use power
         [SerializeField] private float _manaMax = 0f;
-
-
-
 
         //PUBLIC VARIABLES
         public float ManaGain { get => _manaGain; } //ACTUAL MANA
@@ -35,12 +27,22 @@ namespace Unit{
         /// </summary>
         public void RefreshData(){
             //Get variables of the Unit
-            UnitVariables unitVar = _unitScriptable.GetStat();
+            if(_unitScriptable != null){
+                UnitVariables unitVar = _unitScriptable.GetStat();
 
-            if(unitVar._basicMesh != null) GetComponent<MeshFilter>().sharedMesh = unitVar._basicMesh;
-            this.name = "BaseUnit : " + unitVar._unitName;
-            this._unitLife = unitVar._life;
-            _manaMax = 10;
+                if(unitVar._basicMesh != null){
+                    GetComponent<MeshFilter>().sharedMesh = unitVar._basicMesh;
+                    GetComponent<MeshCollider>().sharedMesh = unitVar._basicMesh;
+                }
+
+                this.gameObject.name = "BaseUnit : " + unitVar._unitName;
+                _unitLife = unitVar._life;
+                _manaMax = 10;
+            }
+            else{
+                GetComponent<MeshFilter>().sharedMesh = null;
+                GetComponent<MeshCollider>().sharedMesh = null;
+            }
         }
 
         #region UnitMethods
@@ -61,7 +63,6 @@ namespace Unit{
         }
         #endregion UnitMethods
 
-
         //RELOAD ALL THE DATA FROM THE SCRIPTABLEOBJECT
 #if UNITY_EDITOR
         /// <summary>
@@ -69,10 +70,7 @@ namespace Unit{
         /// </summary>
         private void OnValidate(){
             //Refresh all the data if the ScriptableObject change
-            if(_unitScriptable != _lastUnitSO && _unitScriptable != null){
-                RefreshData();
-                _lastUnitSO = _unitScriptable;
-            }
+            RefreshData();
         }
 #endif
     }
