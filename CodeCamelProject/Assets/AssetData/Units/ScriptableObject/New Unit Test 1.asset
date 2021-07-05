@@ -19,4 +19,4 @@ MonoBehaviour:
   _damage: 10
   _fireRate: 10
   _moveSpeed: 10
-  _basicMesh: {fileID: 4300002, guid: 05495f8d2f8d91746a6bef216c28f5d9, type: 3}
+  _basicMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}

@@ -8,7 +8,7 @@ public class GameManager : MonoSingleton<GameManager>{
 
     [Header("Mouse Informations")]
     //CYLINDER
-    [SerializeField] private GameObject _cylinderUnderMouse = null;
+    [SerializeField, ReadOnly] private GameObject _cylinderUnderMouse = null;
     [SerializeField] private LayerMask _cylinderLayer;
     GameObject lastCylinderUnderMouse = null;
     //Cylinder Event
@@ -17,14 +17,25 @@ public class GameManager : MonoSingleton<GameManager>{
     [Space]
 
     //UNIT
-    [SerializeField] private GameObject _unitUnderMouse = null;
+    [SerializeField, ReadOnly] private GameObject _unitUnderMouse = null;
     [SerializeField] private LayerMask _unitLayer;
     GameObject lastUnitUnderMouse = null;
     //Unit Event
     public static OnObjectUnderMouseChange unitChange;
 
+    [Header("Drag Info")]
+    [ReadOnly, SerializeField] private bool _isDraggingUnit = false;
+    [SerializeField, ReadOnly] private GameObject _unitDragging = null;
+
     private void Update(){
         GenerateRaycastsUnderMouse();
+
+        if(Input.GetMouseButtonDown(0)){
+            StartDragging();
+        }
+        if(Input.GetMouseButtonUp(0)){
+            StopDragging();
+        }
     }
 
     /// <summary>
@@ -53,11 +64,47 @@ public class GameManager : MonoSingleton<GameManager>{
         }
     }
 
+
+    #region DraggingUnit
+    /// <summary>
+    /// Let the player drag a unit
+    /// </summary>
+    void StartDragging(){
+        if(checkForDragging()){
+            _isDraggingUnit = true;
+            _unitDragging = _unitUnderMouse;
+            cylinderChange += MoveUnitWhenDragging;
+        }
+    }
+
+    /// <summary>
+    /// When the player release the mouse button when dragging
+    /// </summary>
+    void StopDragging(){
+        if(_isDraggingUnit){
+            _isDraggingUnit = false;
+            _unitDragging = null;
+            cylinderChange -= MoveUnitWhenDragging;
+        }
+    }
+
+    /// <summary>
+    /// move the unit on top of a cylinder
+    /// </summary>
+    void MoveUnitWhenDragging(){
+        _unitDragging.transform.position = new Vector3(
+            _cylinderUnderMouse.transform.position.x,
+            _cylinderUnderMouse.transform.position.y + (_cylinderUnderMouse.GetComponent<MeshCollider>().bounds.size.y / 2) + (_unitDragging.GetComponent<MeshCollider>().bounds.size.y / 2), 
+            _cylinderUnderMouse.transform.position.z);
+    }
+
+    #endregion DraggingUnit
+
     #region CheckMouse
     void CheckCylinder(){
         if(CheckCylinderUnderMouse()){
             //CALL EVENT
-            if(cylinderChange != null) cylinderChange();
+            if(cylinderChange != null && _cylinderUnderMouse != null) cylinderChange();
             lastCylinderUnderMouse = _cylinderUnderMouse;
         }
     }
@@ -84,6 +131,19 @@ public class GameManager : MonoSingleton<GameManager>{
     bool checkUnitUnderMouse(){
         if(_unitUnderMouse != lastUnitUnderMouse) return true;
         else return false;
+    }
+
+    /// <summary>
+    /// Check if the player can drag a unit
+    /// </summary>
+    /// <returns></returns>
+    bool checkForDragging(){
+        if(_unitUnderMouse != null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     #endregion CheckMouse
 }
