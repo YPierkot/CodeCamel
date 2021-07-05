@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Map {
@@ -20,7 +21,10 @@ namespace Map {
             List<Vector3> posList = GenerateCylinderPos();
 
             foreach(Vector3 pos in posList){
-                GameObject cyl = Instantiate(_meshToCreate, pos, Quaternion.Euler(-90,0,90), this.transform);
+                Object cyl = PrefabUtility.InstantiatePrefab(_meshToCreate, this.transform);
+                GameObject cylGam = cyl as GameObject;
+                cylGam.transform.position = pos;
+                cylGam.transform.rotation = Quaternion.Euler(-90, 0, 90);
                 cyl.name = "cylinder " + posList.IndexOf(pos).ToString();
             }
         }
@@ -31,7 +35,7 @@ namespace Map {
         public void DeleteMap(){
             if(transform.childCount == 0) return;
             for(int i = 0; i < transform.childCount; i++){
-                DestroyImmediate(transform.GetChild(i).gameObject, true);
+                DestroyImmediate(transform.GetChild(0).gameObject, true);
             }
         }
 

@@ -18,12 +18,18 @@ namespace Unit{
         [Header("Unit Basic Stat")]
         [Tooltip("MaxLife (and StartLife) of the Unit")]
         [SerializeField] private int _life = 0;
-        [Tooltip("Damage of the Unit for each attack")]
-        [SerializeField] private int _damage = 0;
-        [Tooltip("Time between two attacks")]
-        [SerializeField] private float _fireRate = 0f;
-        [Tooltip("Speed of the Unit when need to Move")]
-        [SerializeField] private float _moveSpeed;
+        [Tooltip("How much attack does the unity make per second")]
+        [SerializeField] private float _attackPerSecond = 0;
+        [Tooltip("Chance to make a critical attack")]
+        [SerializeField] private float _critChance = 0f;
+        [Tooltip("Pourcent of creat value")]
+        [SerializeField] private float _critValueMultiplier = 0f;
+        [Tooltip("Pourcent of dodging")]
+        [SerializeField] private float _evasionRate = 0f;
+        [Tooltip("Pourcent of dodging")]
+        [SerializeField] private float _attackRange = 0f;
+        [Tooltip("Pourcent of dodging")]
+        [SerializeField] private float _moveSPeed = 0f;
 
         [Header("Unit Asset")]
         [Tooltip("the basic mesh of the unit. This mesh will be updated when the scriptable change")]
@@ -39,9 +45,12 @@ namespace Unit{
             unitV._unitFamily = this._unitFamily;
             unitV._unitElement = this._unitElement;
             unitV._life = this._life;
-            unitV._damage = this._damage;
-            unitV._fireRate = this._fireRate;
-            unitV._moveSpeed = this._moveSpeed;
+            unitV._attackPerSecond = this._attackPerSecond;
+            unitV._critChance = this._critChance;
+            unitV._critValueMultiplier = this._critValueMultiplier;
+            unitV._evasionRate = this._evasionRate;
+            unitV._attackRange = this._attackRange;
+            unitV._moveSPeed = this._moveSPeed;
             unitV._basicMesh = this._basicMesh;
             return unitV;
         }
@@ -79,9 +88,12 @@ namespace Unit{
         public List<UnitsElement> _unitElement;
 
         public int _life;
-        public int _damage;
-        public float _fireRate;
-        public float _moveSpeed;
+        public float _attackPerSecond;
+        public float _critChance;
+        public float _critValueMultiplier;
+        public float _evasionRate;
+        public float _attackRange;
+        public float _moveSPeed;
 
         public Mesh _basicMesh;
     }
