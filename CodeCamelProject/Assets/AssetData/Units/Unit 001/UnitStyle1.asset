@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990e28094e34d834ca465fd0da387f4d, type: 3}
   m_Name: UnitStyle1
   m_EditorClassIdentifier: 
+  _styleCost:
+  - _elements: 1
+    _value: 2
   _damageDataList:
   - _damageType: 1
     _damageBorne: {x: 6, y: 8}

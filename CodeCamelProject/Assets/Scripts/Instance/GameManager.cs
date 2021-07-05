@@ -8,8 +8,8 @@ public class GameManager : MonoSingleton<GameManager>{
 
     [Header("Mouse Informations")]
     //CYLINDER
-    [SerializeField, ReadOnly] private GameObject _cylinderUnderMouse = null;
     [SerializeField] private LayerMask _cylinderLayer;
+    [SerializeField, ReadOnly] private GameObject _cylinderUnderMouse = null;
     GameObject lastCylinderUnderMouse = null;
     //Cylinder Event
     public static OnObjectUnderMouseChange cylinderChange;
@@ -17,15 +17,22 @@ public class GameManager : MonoSingleton<GameManager>{
     [Space]
 
     //UNIT
-    [SerializeField, ReadOnly] private GameObject _unitUnderMouse = null;
     [SerializeField] private LayerMask _unitLayer;
+    [SerializeField, ReadOnly] private GameObject _unitUnderMouse = null;
     GameObject lastUnitUnderMouse = null;
     //Unit Event
     public static OnObjectUnderMouseChange unitChange;
 
     [Header("Drag Info")]
+    [SerializeField] private float _dragSpeed = 0f;
     [ReadOnly, SerializeField] private bool _isDraggingUnit = false;
-    [SerializeField, ReadOnly] private GameObject _unitDragging = null;
+    [ReadOnly, SerializeField] private bool _hasReachTarget = false;
+    [ReadOnly, SerializeField] private GameObject _unitDragging = null;
+    Vector3 _targetTransform;
+
+    private void Start(){
+        _hasReachTarget = true;
+    }
 
     private void Update(){
         GenerateRaycastsUnderMouse();
@@ -35,6 +42,23 @@ public class GameManager : MonoSingleton<GameManager>{
         }
         if(Input.GetMouseButtonUp(0)){
             StopDragging();
+        }
+
+        if(_isDraggingUnit) {
+            _unitDragging.transform.position = Vector3.Lerp(_unitDragging.transform.position, _targetTransform, Time.deltaTime * _dragSpeed);
+            if(Vector3.Distance(_unitDragging.transform.position, _targetTransform) < 0.01f) {
+                _hasReachTarget = true;
+            }
+            else{
+                _hasReachTarget = false;
+            }
+        }
+        else if(_hasReachTarget == false){
+            _unitDragging.transform.position = Vector3.Lerp(_unitDragging.transform.position, _targetTransform, Time.deltaTime * _dragSpeed);
+            if(Vector3.Distance(_unitDragging.transform.position, _targetTransform) < 0.01f){
+                _hasReachTarget = true;
+                _unitDragging = null;
+            }
         }
     }
 
@@ -74,6 +98,7 @@ public class GameManager : MonoSingleton<GameManager>{
             _isDraggingUnit = true;
             _unitDragging = _unitUnderMouse;
             cylinderChange += MoveUnitWhenDragging;
+            MoveUnitWhenDragging();
         }
     }
 
@@ -83,8 +108,11 @@ public class GameManager : MonoSingleton<GameManager>{
     void StopDragging(){
         if(_isDraggingUnit){
             _isDraggingUnit = false;
-            _unitDragging = null;
             cylinderChange -= MoveUnitWhenDragging;
+
+            if(_hasReachTarget){
+                _unitDragging = null;
+            }
         }
     }
 
@@ -92,7 +120,7 @@ public class GameManager : MonoSingleton<GameManager>{
     /// move the unit on top of a cylinder
     /// </summary>
     void MoveUnitWhenDragging(){
-        _unitDragging.transform.position = new Vector3(
+        _targetTransform = new Vector3(
             _cylinderUnderMouse.transform.position.x,
             _cylinderUnderMouse.transform.position.y + (_cylinderUnderMouse.GetComponent<MeshCollider>().bounds.size.y / 2) + (_unitDragging.GetComponent<MeshCollider>().bounds.size.y / 2), 
             _cylinderUnderMouse.transform.position.z);
