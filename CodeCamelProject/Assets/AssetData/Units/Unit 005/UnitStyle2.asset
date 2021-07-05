@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990e28094e34d834ca465fd0da387f4d, type: 3}
   m_Name: UnitStyle2
   m_EditorClassIdentifier: 
+  _styleCost:
+  - _elements: 3
+    _value: 1
+  - _elements: 1
+    _value: 3
   _damageDataList:
   - _damageType: 3
     _damageBorne: {x: 7, y: 10}
@@ -23,8 +28,8 @@ MonoBehaviour:
     _damageBorne: {x: 9, y: 11}
   _abilityName: 6
   _manaCharge: 150
-  _bonusLife: 0
-  _attackSpeedMultiplier: 0
-  _bonusCriticalLuck: 0
-  _bonusCriticalValue: 0
+  _bonusLife: -50
+  _attackSpeedMultiplier: 1
+  _bonusCriticalLuck: -0.1
+  _bonusCriticalValue: -0.5
   _bonusEvasion: 0

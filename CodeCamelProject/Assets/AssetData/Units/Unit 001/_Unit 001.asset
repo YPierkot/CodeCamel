@@ -15,11 +15,11 @@ MonoBehaviour:
   _unitName: Robot Fair
   _unitFamily: 0
   _unitElement: 0100000004000000
-  _life: 10
-  _attackPerSecond: 0
-  _critChance: 0
-  _critValueMultiplier: 0
-  _evasionRate: 0
-  _attackRange: 0
-  _moveSPeed: 0
+  _life: 150
+  _attackPerSecond: 1.5
+  _critChance: 0.15
+  _critValueMultiplier: 1.5
+  _evasionRate: 0.1
+  _attackRange: 2
+  _moveSPeed: 2
   _basicMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
