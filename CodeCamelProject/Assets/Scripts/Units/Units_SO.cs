@@ -13,7 +13,7 @@ namespace Unit{
         [Tooltip("Family of the Unit")]
         [SerializeField] private UnitsFamily _unitFamily = UnitsFamily.Family1;
         [Tooltip("Element of the Unit")]
-        [SerializeField] private UnitsElement _unitElement = UnitsElement.None;
+        [SerializeField] private List<UnitsElement> _unitElement = new List<UnitsElement>();
 
         [Header("Unit Basic Stat")]
         [Tooltip("MaxLife (and StartLife) of the Unit")]
@@ -76,7 +76,7 @@ namespace Unit{
     public class UnitVariables{
         public string _unitName;
         public UnitsFamily _unitFamily;
-        public UnitsElement _unitElement;
+        public List<UnitsElement> _unitElement;
 
         public int _life;
         public int _damage;
