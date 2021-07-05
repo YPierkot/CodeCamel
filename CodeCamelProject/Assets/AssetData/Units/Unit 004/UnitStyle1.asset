@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 990e28094e34d834ca465fd0da387f4d, type: 3}
-  m_Name: UnitStyle
+  m_Name: UnitStyle1
   m_EditorClassIdentifier: 
   _damageDataList:
-  - _damageType: 0
-    _damageBorne: {x: 0, y: 0}
-  - _damageType: 0
-    _damageBorne: {x: 0, y: 0}
-  _abilityName: 
-  _manaCharge: 0
+  - _damageType: 2
+    _damageBorne: {x: 5, y: 7}
+  - _damageType: 4
+    _damageBorne: {x: 3, y: 5}
+  _abilityName: 3
+  _manaCharge: 100
   _bonusLife: 0
   _attackSpeedMultiplier: 0
   _bonusCriticalLuck: 0
