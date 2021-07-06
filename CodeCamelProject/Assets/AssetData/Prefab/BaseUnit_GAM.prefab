@@ -97,9 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitScriptable: {fileID: 0}
+  _player: 0
   _unitLife: 10
   _manaGain: 0
   _manaMax: 10
+  _hexUnderUnit: {fileID: 0}
 --- !u!95 &-4625319025920701053
 Animator:
   serializedVersion: 3

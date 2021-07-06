@@ -6,13 +6,21 @@ using UnityEngine;
 namespace Map {
 
     public class MapGeneration : MonoBehaviour{
+        #region Variables
         [Header("Map Size")]
         [SerializeField] private int _xSize = 0;
         [SerializeField] private int _ySize = 0;
 
         [Header("Map Gam")]
         [SerializeField] private GameObject _meshToCreate = null;
-        
+
+        //PUBLIC VARIABLES
+        public int XSize { get => _xSize; set => _xSize = value; }
+        public int YSize { get => _ySize; set => _ySize = value; }
+        public GameObject MeshToCreate { get => _meshToCreate; set => _meshToCreate = value; }
+        #endregion Variables
+
+#if UNITY_EDITOR
         /// <summary>
         /// Generate the terrain based on the width of the map
         /// </summary>
@@ -39,6 +47,10 @@ namespace Map {
             }
         }
 
+        /// <summary>
+        /// Get all the position of the hex
+        /// </summary>
+        /// <returns></returns>
         List<Vector3> GenerateCylinderPos(){
             List<Vector3> cylinderPosList = new List<Vector3>();
 
@@ -49,5 +61,6 @@ namespace Map {
             }
             return cylinderPosList;
         }
+#endif
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>{
+    #region Variables
     //Delegate when an object under the mouse change
     public delegate void OnObjectUnderMouseChange();
 
@@ -28,7 +29,9 @@ public class GameManager : MonoSingleton<GameManager>{
     [ReadOnly, SerializeField] private bool _isDraggingUnit = false;
     [ReadOnly, SerializeField] private bool _hasReachTarget = false;
     [ReadOnly, SerializeField] private GameObject _unitDragging = null;
+    [ReadOnly, SerializeField] private GameObject _startHex = null;
     Vector3 _targetTransform;
+    #endregion Variables
 
     private void Start(){
         _hasReachTarget = true;
@@ -44,7 +47,7 @@ public class GameManager : MonoSingleton<GameManager>{
             StopDragging();
         }
 
-        if(_isDraggingUnit) {
+        if(_isDraggingUnit && _cylinderUnderMouse != null) {
             _unitDragging.transform.position = Vector3.Lerp(_unitDragging.transform.position, _targetTransform, Time.deltaTime * _dragSpeed);
             if(Vector3.Distance(_unitDragging.transform.position, _targetTransform) < 0.01f) {
                 _hasReachTarget = true;
@@ -88,7 +91,6 @@ public class GameManager : MonoSingleton<GameManager>{
         }
     }
 
-
     #region DraggingUnit
     /// <summary>
     /// Let the player drag a unit
@@ -98,6 +100,7 @@ public class GameManager : MonoSingleton<GameManager>{
             _isDraggingUnit = true;
             _unitDragging = _unitUnderMouse;
             cylinderChange += MoveUnitWhenDragging;
+            if(_unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit != null) _startHex = _unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit;
             MoveUnitWhenDragging();
         }
     }
@@ -109,6 +112,8 @@ public class GameManager : MonoSingleton<GameManager>{
         if(_isDraggingUnit){
             _isDraggingUnit = false;
             cylinderChange -= MoveUnitWhenDragging;
+            _cylinderUnderMouse.GetComponent<Map.HexManager>().AddUnitToTerrain(_unitDragging, _startHex);
+            _startHex = null;
 
             if(_hasReachTarget){
                 _unitDragging = null;
@@ -120,6 +125,7 @@ public class GameManager : MonoSingleton<GameManager>{
     /// move the unit on top of a cylinder
     /// </summary>
     void MoveUnitWhenDragging(){
+        if(_cylinderUnderMouse == null) return;
         _targetTransform = new Vector3(
             _cylinderUnderMouse.transform.position.x,
             _cylinderUnderMouse.transform.position.y + (_cylinderUnderMouse.GetComponent<MeshCollider>().bounds.size.y / 2) + (_unitDragging.GetComponent<MeshCollider>().bounds.size.y / 2), 
