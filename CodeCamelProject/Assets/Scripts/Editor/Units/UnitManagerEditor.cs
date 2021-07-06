@@ -30,7 +30,8 @@ public class UnitManagerEditor : Editor{
         if(script._unitScriptable != null) unitVar = script._unitScriptable.GetStat();
 
         //Show the ScriptableObject Slot and a button to refresh the variable
-        GUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+        GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+        GUILayout.BeginHorizontal();
         EditorGUILayout.PropertyField(SOproperty, new GUIContent("Unit Scriptable"));
         mySerObj.ApplyModifiedProperties();
         if(script._unitScriptable != null){
@@ -45,24 +46,52 @@ public class UnitManagerEditor : Editor{
             }
         }
         GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        if(script._unitScriptable != null){
+            if(GUILayout.Button("CHANGE ARMY")){
+                script.Player = script.Player == 1? 2 : 1;
+            }
+            GUILayout.Label($"THIS IS A UNIT OF THE PLAYER : {script.Player}", StaticEditor.labelStyle);
+        }
+        GUILayout.EndHorizontal();
+        GUILayout.EndVertical();
 
         if(script._unitScriptable == null) return;
 
-        Space(5);
+        StaticEditor.Space(5);
         GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-        var style = new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 12};
-        if(GUILayout.Button(script.runTimeData? "CLOSE RUNTIME DATA" : "OPEN RUNTIME DATA", style,  GUILayout.ExpandWidth(true))){
+        if(GUILayout.Button(script.runTimeData? "CLOSE RUNTIME DATA" : "OPEN RUNTIME DATA", StaticEditor.buttonStyle,  GUILayout.ExpandWidth(true))){
             script.runTimeData = !script.runTimeData;
         }
 
         if(script.runTimeData){
-            Space(5);
             int iconSize = 20;
 
             //MANA PROGRESS BAR
+            GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            GUILayout.Label("UNIT STAT", StaticEditor.labelStyle);
+
+            //LIFE PROGRESS BAR
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Life.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
+            StaticEditor.ProgressBar(script.UnitLife / unitVar._life, $"Life : {script.UnitLife} / {unitVar._life}");
+            //Deal damage
+            if(GUILayout.Button("-", GUILayout.Width(20)))
+            {
+                if(script.UnitLife - 1 >= 0) script.TakeDamage(1);
+                else Debug.LogError("Can't deal more damage. The UnitLife is already at 0");
+            }
+            //Give life
+            if(GUILayout.Button("+", GUILayout.Width(20)))
+            {
+                if(script.UnitLife + 1 <= unitVar._life) script.TakeDamage(-1);
+                else Debug.LogError($"Can't give more life to the unit. The Unit is already at maxLife : {unitVar._life}");
+            }
+            GUILayout.EndHorizontal();
+
             GUILayout.BeginHorizontal();
             GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Mana.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
-            ProgressBar(script.ManaGain / script.ManaMax, $"Mana : {script.ManaGain} / {script.ManaMax}");
+            StaticEditor.ProgressBar(script.ManaGain / script.ManaMax, $"Mana : {script.ManaGain} / {script.ManaMax}");
             //Reduce Mana
             if(GUILayout.Button("-", GUILayout.Width(20))){
                 if(script.ManaGain - 1 >= 0) script.AddMana(-1);
@@ -74,32 +103,47 @@ public class UnitManagerEditor : Editor{
                 else Debug.LogError($"Can't give more mana to the unit. The Unit is already at maxMana : {script.ManaMax}");
             }
             GUILayout.EndHorizontal();
+            GUILayout.EndVertical();
 
-            //LIFE PROGRESS BAR
-            GUILayout.BeginHorizontal();
-            GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Life.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
-            ProgressBar(script.UnitLife / unitVar._life, $"Life : {script.UnitLife} / {unitVar._life}");
-            //Deal damage
-            if(GUILayout.Button("-", GUILayout.Width(20))) {
-                if(script.UnitLife - 1 >= 0) script.TakeDamage(1);
-                else Debug.LogError("Can't deal more damage. The UnitLife is already at 0");
-            }
-            //Give life
-            if(GUILayout.Button("+", GUILayout.Width(20))) {
-                if(script.UnitLife + 1 <= unitVar._life) script.TakeDamage(-1);
-                else Debug.LogError($"Can't give more life to the unit. The Unit is already at maxLife : {unitVar._life}");
-            }
-            GUILayout.EndHorizontal();
+            GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            GUILayout.Label("HEX UNDER UNIT", StaticEditor.labelStyle);
+            GUI.enabled = false;
+            EditorGUILayout.ObjectField(script.HexUnderUnit, typeof(GameObject), allowSceneObjects: true);
+            GUI.enabled = true;
+            GUILayout.EndVertical();
         }
+
+        //Close the box Runtime
         GUILayout.EndVertical();
     }
+
+
+    private Texture2D MakeTex(int width, int height, Color col)
+    {
+        Color[] pix = new Color[width * height];
+        for(int i = 0; i < pix.Length; ++i)
+        {
+            pix[i] = col;
+        }
+        Texture2D result = new Texture2D(width, height);
+        result.SetPixels(pix);
+        result.Apply();
+        return result;
+    }
+}
+
+public static class StaticEditor
+{
+    public static GUIStyle buttonStyle = new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 12 };
+    public static GUIStyle labelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 12 };
 
     /// <summary>
     /// Create a progressBar
     /// </summary>
     /// <param name="value"></param>
     /// <param name="label"></param>
-    void ProgressBar(float value, string label){
+    public static void ProgressBar(float value, string label)
+    {
         // Get a rect for the progress bar using the same margins as a textfield:
         Rect rect = GUILayoutUtility.GetRect(18, 18, "TextField");
         EditorGUI.ProgressBar(rect, value, label);
@@ -110,7 +154,8 @@ public class UnitManagerEditor : Editor{
     /// Make a space in the editor
     /// </summary>
     /// <param name="value"></param>
-    void Space(int value){
+    public static void Space(int value)
+    {
         GUILayout.Space(value);
     }
 }

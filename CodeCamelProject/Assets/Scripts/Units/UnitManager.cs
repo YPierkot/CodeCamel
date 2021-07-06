@@ -8,18 +8,25 @@ namespace Unit{
         #region Variables
         public Units_SO _unitScriptable = null;
 
+
+        [Header("Unit")]
+        [SerializeField, Range(0,1)] private int _player = 0;
+
         [Header("Unit Stat")]
-        //LIFE
-        [SerializeField] private float _unitLife = 0f;
-        //MANA
-        [SerializeField] private float _manaGain = 0f;
-        [SerializeField] private float _manaMax = 0f;
+        [SerializeField] private float _unitLife = 0f; //LIFE
+        [SerializeField] private float _manaGain = 0f; //MANA
+        [SerializeField] private float _manaMax = 0f;  //MANA
+
+        [Header("Hex")]
+        [SerializeField] private GameObject _hexUnderUnit = null;
 
         //PUBLIC VARIABLES
         public float ManaGain { get => _manaGain; } //ACTUAL MANA
         public float ManaMax { get => _manaMax; } //MANA FOR POWER
         public float UnitLife { get => _unitLife; } //ACTUAL LIFE
         public bool runTimeData { get; set; } //ACTUAL LIFE
+        public GameObject HexUnderUnit { get => _hexUnderUnit; } //ACTUAL HEX UNDER UNIT
+        public int Player { get => _player; set => _player = value; } //WHICH PLAYER POSESS THIS UNIT
         #endregion Variables
 
         /// <summary>
@@ -62,6 +69,13 @@ namespace Unit{
             _manaGain += mana;
         }
         #endregion UnitMethods
+
+        #region HexTile
+        public void ChangeHexUnderUnit(GameObject hex = null){
+            _hexUnderUnit = hex;
+        }
+
+#endregion HexTile
 
         //RELOAD ALL THE DATA FROM THE SCRIPTABLEOBJECT
 #if UNITY_EDITOR

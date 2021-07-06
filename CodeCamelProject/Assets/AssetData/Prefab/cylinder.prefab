@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4234849339340035350}
   - component: {fileID: 2099172484128039388}
   - component: {fileID: 783722961172010141}
+  - component: {fileID: 603259260}
   m_Layer: 12
   m_Name: cylinder
   m_TagString: Untagged
@@ -96,3 +97,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 480b3a6078ec6b747884bf10b7df0ed5, type: 3}
+--- !u!114 &603259260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441702617158402057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d236ba0b04cd41c479f9b630cdd72c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
