@@ -76,14 +76,12 @@ public class UnitManagerEditor : Editor{
             GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Life.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
             StaticEditor.ProgressBar(script.UnitLife / unitVar._life, $"Life : {script.UnitLife} / {unitVar._life}");
             //Deal damage
-            if(GUILayout.Button("-", GUILayout.Width(20)))
-            {
+            if(GUILayout.Button("-", GUILayout.Width(20))){
                 if(script.UnitLife - 1 >= 0) script.TakeDamage(1);
                 else Debug.LogError("Can't deal more damage. The UnitLife is already at 0");
             }
             //Give life
-            if(GUILayout.Button("+", GUILayout.Width(20)))
-            {
+            if(GUILayout.Button("+", GUILayout.Width(20))){
                 if(script.UnitLife + 1 <= unitVar._life) script.TakeDamage(-1);
                 else Debug.LogError($"Can't give more life to the unit. The Unit is already at maxLife : {unitVar._life}");
             }
@@ -129,33 +127,5 @@ public class UnitManagerEditor : Editor{
         result.SetPixels(pix);
         result.Apply();
         return result;
-    }
-}
-
-public static class StaticEditor
-{
-    public static GUIStyle buttonStyle = new GUIStyle(GUI.skin.button) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 12 };
-    public static GUIStyle labelStyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold, fontSize = 12 };
-
-    /// <summary>
-    /// Create a progressBar
-    /// </summary>
-    /// <param name="value"></param>
-    /// <param name="label"></param>
-    public static void ProgressBar(float value, string label)
-    {
-        // Get a rect for the progress bar using the same margins as a textfield:
-        Rect rect = GUILayoutUtility.GetRect(18, 18, "TextField");
-        EditorGUI.ProgressBar(rect, value, label);
-        Space(2);
-    }
-
-    /// <summary>
-    /// Make a space in the editor
-    /// </summary>
-    /// <param name="value"></param>
-    public static void Space(int value)
-    {
-        GUILayout.Space(value);
     }
 }

@@ -8,7 +8,6 @@ namespace Unit{
         #region Variables
         public Units_SO _unitScriptable = null;
 
-
         [Header("Unit")]
         [SerializeField, Range(0,1)] private int _player = 0;
 

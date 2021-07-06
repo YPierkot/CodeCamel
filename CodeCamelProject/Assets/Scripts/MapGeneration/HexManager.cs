@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EnumScript;
 using static GameManager;
 
 namespace Map
@@ -9,10 +10,16 @@ namespace Map
     {
         #region Variables
         [Header("Terrain Type")]
-        private List<TerrainType> _terrainType = new List<TerrainType>();
-        public List<TerrainType> TerrainType { get => _terrainType; set => _terrainType = value; }
+        //Terrain effect on the hex
+        [SerializeField] private List<EnumScript.TerrainType> _terrainType = new List<EnumScript.TerrainType>();
+        public List<EnumScript.TerrainType> TerrainType { get => _terrainType; set => _terrainType = value; }
+
+        //Player who can put a Unit on the Hex
+        [SerializeField] private PlayerSide _playerCanPose = PlayerSide.BluePlayer;
+        public PlayerSide PlayerCanPose { get => _playerCanPose; set => _playerCanPose = value; }
 
         [Header("Unit On Hex")]
+        //Which Unit is on the hex
         private GameObject _unitOnHex = null;
         public GameObject UnitOnHex { get => _unitOnHex; }
         #endregion Variables
@@ -23,7 +30,7 @@ namespace Map
         }
 
         public void AddTerrainEffect(){
-            _terrainType.Add(Map.TerrainType.Beach);
+            _terrainType.Add(EnumScript.TerrainType.Beach);
         }
 
         /// <summary>
@@ -47,22 +54,26 @@ namespace Map
             _unitOnHex = null;
         }
         #endregion UnitOnTerrain
-    }
 
-    /// <summary>
-    /// All the terrain Effect
-    /// </summary>
-    public enum TerrainType{
-        Ground,
-        Forest,
-        Beach
+        private void OnDrawGizmos(){
+            switch(_playerCanPose){
+                case PlayerSide.None:
+                    break;
+                case PlayerSide.RedPlayer:
+                    Gizmos.DrawIcon(transform.position + new Vector3(0, GetComponent<MeshCollider>().bounds.size.y / 1.8f, 0), "sv_icon_name6", true);
+                    break;
+                case PlayerSide.BluePlayer:
+                    Gizmos.DrawIcon(transform.position + new Vector3(0, GetComponent<MeshCollider>().bounds.size.y / 1.8f, 0), "sv_icon_name1", true);
+                    break;
+            }
+        }
     }
 
     /// <summary>
     /// Data for a effect
     /// </summary>
     public class EffectData { 
-        public TerrainType _terrainEffect;
+        public EnumScript.TerrainType _terrainEffect;
         public List<GameObject> _hexList = new List<GameObject>();
     }
 }
