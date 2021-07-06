@@ -20,10 +20,10 @@ MonoBehaviour:
   _damageDataList:
   - _damageType: 3
     _damageBorne: {x: 6, y: 8}
-  _abilityName: 3
-  _manaCharge: 150
+  _abilityName: 4
+  _manaCharge: 125
   _bonusLife: 0
-  _attackSpeedMultiplier: 1
+  _attackSpeedMultiplier: 0
   _bonusCriticalLuck: 0
-  _bonusCriticalValue: 1
-  _bonusEvasion: 0
+  _bonusCriticalValue: 0
+  _bonusEvasion: 0.1

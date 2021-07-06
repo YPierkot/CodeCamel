@@ -22,10 +22,10 @@ MonoBehaviour:
     _damageBorne: {x: 6, y: 8}
   - _damageType: 4
     _damageBorne: {x: 2, y: 6}
-  _abilityName: 6
-  _manaCharge: 200
-  _bonusLife: 150
-  _attackSpeedMultiplier: 1
-  _bonusCriticalLuck: 0
-  _bonusCriticalValue: 1
+  _abilityName: 7
+  _manaCharge: 150
+  _bonusLife: 250
+  _attackSpeedMultiplier: 0
+  _bonusCriticalLuck: 0.08
+  _bonusCriticalValue: 0
   _bonusEvasion: -0.05

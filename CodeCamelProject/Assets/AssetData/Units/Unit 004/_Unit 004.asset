@@ -18,7 +18,7 @@ MonoBehaviour:
   _life: 100
   _attackPerSecond: 2
   _critChance: 0.2
-  _critValueMultiplier: 2.5
+  _critValueMultiplier: 1.5
   _evasionRate: 0.2
   _attackRange: 2
   _moveSPeed: 3

@@ -21,11 +21,11 @@ MonoBehaviour:
   - _damageType: 1
     _damageBorne: {x: 6, y: 8}
   - _damageType: 4
-    _damageBorne: {x: 6, y: 8}
+    _damageBorne: {x: 5, y: 7}
   _abilityName: 3
-  _manaCharge: 75
+  _manaCharge: 100
   _bonusLife: 0
-  _attackSpeedMultiplier: 1
+  _attackSpeedMultiplier: 0
   _bonusCriticalLuck: 0
-  _bonusCriticalValue: 1
+  _bonusCriticalValue: 0
   _bonusEvasion: 0
