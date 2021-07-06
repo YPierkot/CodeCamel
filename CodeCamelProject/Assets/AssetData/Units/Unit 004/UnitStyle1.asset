@@ -19,13 +19,13 @@ MonoBehaviour:
     _value: 1
   _damageDataList:
   - _damageType: 2
-    _damageBorne: {x: 5, y: 7}
-  - _damageType: 4
     _damageBorne: {x: 3, y: 5}
+  - _damageType: 4
+    _damageBorne: {x: 2, y: 3}
   _abilityName: 3
   _manaCharge: 100
   _bonusLife: 0
-  _attackSpeedMultiplier: 1
+  _attackSpeedMultiplier: 0
   _bonusCriticalLuck: 0
-  _bonusCriticalValue: 1
+  _bonusCriticalValue: 0
   _bonusEvasion: 0

@@ -23,9 +23,9 @@ MonoBehaviour:
   - _damageType: 3
     _damageBorne: {x: 2, y: 5}
   _abilityName: 9
-  _manaCharge: 50
+  _manaCharge: 75
   _bonusLife: 0
-  _attackSpeedMultiplier: 1
+  _attackSpeedMultiplier: 0
   _bonusCriticalLuck: 0
-  _bonusCriticalValue: 1
-  _bonusEvasion: 0.1
+  _bonusCriticalValue: 0
+  _bonusEvasion: 0
