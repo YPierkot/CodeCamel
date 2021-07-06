@@ -16,7 +16,10 @@ MonoBehaviour:
   _unitFamily: 3
   _unitElement: 0400000002000000
   _life: 100
-  _damage: 0
-  _fireRate: 0
-  _moveSpeed: 0
+  _attackPerSecond: 2
+  _critChance: 0.2
+  _critValueMultiplier: 2.5
+  _evasionRate: 0.2
+  _attackRange: 2
+  _moveSPeed: 3
   _basicMesh: {fileID: 0}

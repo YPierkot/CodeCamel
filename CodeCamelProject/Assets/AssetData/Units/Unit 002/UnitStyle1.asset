@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990e28094e34d834ca465fd0da387f4d, type: 3}
   m_Name: UnitStyle1
   m_EditorClassIdentifier: 
+  _styleCost:
+  - _elements: 3
+    _value: 1
+  - _elements: 4
+    _value: 1
   _damageDataList:
   - _damageType: 3
     _damageBorne: {x: 6, y: 8}
@@ -20,5 +25,5 @@ MonoBehaviour:
   _bonusLife: 0
   _attackSpeedMultiplier: 1
   _bonusCriticalLuck: 0
-  _bonusCriticalValue: 0
+  _bonusCriticalValue: 1
   _bonusEvasion: 0

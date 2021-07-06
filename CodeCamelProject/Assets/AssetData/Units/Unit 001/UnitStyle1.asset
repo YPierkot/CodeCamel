@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _styleCost:
   - _elements: 1
-    _value: 2
+    _value: 1
+  - _elements: 4
+    _value: 1
   _damageDataList:
   - _damageType: 1
     _damageBorne: {x: 6, y: 8}
@@ -24,6 +26,6 @@ MonoBehaviour:
   _manaCharge: 75
   _bonusLife: 0
   _attackSpeedMultiplier: 1
-  _bonusCriticalLuck: 0
+  _bonusCriticalLuck: 0.05
   _bonusCriticalValue: 1
-  _bonusEvasion: 0
+  _bonusEvasion: 0.05
