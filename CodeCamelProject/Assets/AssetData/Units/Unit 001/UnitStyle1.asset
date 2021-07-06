@@ -26,6 +26,6 @@ MonoBehaviour:
   _manaCharge: 75
   _bonusLife: 0
   _attackSpeedMultiplier: 1
-  _bonusCriticalLuck: 0.05
+  _bonusCriticalLuck: 0
   _bonusCriticalValue: 1
-  _bonusEvasion: 0.05
+  _bonusEvasion: 0
