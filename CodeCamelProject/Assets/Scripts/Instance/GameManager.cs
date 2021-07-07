@@ -41,9 +41,6 @@ public class GameManager : MonoSingleton<GameManager>{
 
     public List<GameObject> RedPlayerUnit { get => _redPlayerUnit; set => _redPlayerUnit = value; }
     public List<GameObject> BluePlayerUnit { get => _bluePlayerUnit; set => _bluePlayerUnit = value; }
-
-
-
     #endregion Variables
 
     private void Start(){

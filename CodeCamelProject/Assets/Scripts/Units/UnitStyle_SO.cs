@@ -8,13 +8,17 @@ namespace Unit {
     [CanEditMultipleObjects]
     public class UnitStyle_SO : ScriptableObject {
         [Header("STYLE COST")]
+        [Tooltip("Cost of the style")]
         [SerializeField] private List<StyleCost> _styleCost = new List<StyleCost>();
 
         [Header("DAMAGE DATA")]
+        [Tooltip("List of the different damage possible")]
         [SerializeField] private List<Unit.DamageDataType> _damageDataList = new List<DamageDataType>();
 
         [Header("ABILITY")]
+        [Tooltip("Name of the ability")]
         [SerializeField] private string _abilityName = "";
+        [Tooltip("Mana to get to active the abitlity")]
         [SerializeField] private int _manaCharge = 0;
 
         [Header("BONUS")]
@@ -33,7 +37,7 @@ namespace Unit {
         [SerializeField] private float _bonusEvasion = 0;
     }
 
-
+    #region CustomClass
     /// <summary>
     /// DamageType for a style
     /// </summary>
@@ -43,9 +47,13 @@ namespace Unit {
         public Vector2 _damageBorne = Vector2.zero;
     }
 
+    /// <summary>
+    /// Cost of a style
+    /// </summary>
     [System.Serializable]
     public class StyleCost{
         public Unit.UnitsElement _elements = Unit.UnitsElement.None;
         public int _value = 0;
     }
+    #endregion CustomClass
 }

@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour{
     [SerializeField] private LayerMask _layer;
-    [ReadOnly, SerializeField] private GameObject _target;
-    [ReadOnly, SerializeField] private GameObject _targetCylinder;
 
-    [SerializeField] private List<GameObject> _hexPath = new List<GameObject>();
+    [Header("Hex Info")]
+    [ReadOnly, SerializeField] private GameObject _targetUnit;
+    [ReadOnly, SerializeField] private GameObject _targetUnitCylinder;
+    [Space]
+    [ReadOnly, SerializeField] private GameObject _basedCylinder = null;
+    [ReadOnly, SerializeField] private GameObject _targetCylinder = null;
 
     bool canMoveUnit = false;
 
     private void Update(){
         if(Input.GetKeyDown(KeyCode.E)){
-            if(_hexPath.Count != 0){
-                cearListGam();
-            }
 
-            _hexPath.Add(this.GetComponent<Unit.UnitManager>().HexUnderUnit);
-            //_hexPath[0].GetComponent<MeshRenderer>().sharedMaterial = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/GoldHex.mat", typeof(Material));
+            _basedCylinder = this.GetComponent<Unit.UnitManager>().HexUnderUnit;
             GetClosestEnnemy();
         }
 
@@ -33,18 +32,22 @@ public class Movement : MonoBehaviour{
     /// </summary>
     void MoveUnitWithPath(){
         //Get the direction of the movement
-        Vector3 dir = (new Vector3(_hexPath[1].transform.position.x, this.transform.position.y, _hexPath[1].transform.position.z) - this.GetComponent<Unit.UnitManager>().HexUnderUnit.transform.position).normalized;
+        Vector3 dir = (new Vector3(_targetCylinder.transform.position.x, this.transform.position.y, _targetCylinder.transform.position.z) - _basedCylinder.transform.position).normalized;
         this.transform.position += new Vector3(dir.x, 0f, dir.z) * Time.deltaTime * this.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._moveSpeed;
 
-        if(Mathf.Abs(Vector3.Distance(this.transform.position, new Vector3(_hexPath[1].transform.position.x, this.transform.position.y, _hexPath[1].transform.position.z))) <= 0.025f){
-            _hexPath[1].GetComponent<Map.HexManager>().AddUnitToTerrain(this.gameObject, this.GetComponent<Unit.UnitManager>().HexUnderUnit);
-            if(_hexPath.Count != 0){
-                cearListGam();
-            }
+        //If the unit is closer to the target hex than the original hex
+        if(StaticRuntime.aCloserThanb(_targetCylinder, _basedCylinder, this.gameObject)){
+            _basedCylinder.GetComponent<Map.HexManager>().RemoveUnit();
+            _targetCylinder.GetComponent<Map.HexManager>().AddUnitToTerrain(this.gameObject, this.GetComponent<Unit.UnitManager>().HexUnderUnit);
+            _targetCylinder.GetComponent<Map.HexManager>().RemoveNextUnit();
+        }
 
-            if(Vector3.Distance(this.transform.position, _target.transform.position) >= this.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._attackRange * 2){
-                _hexPath.Add(this.GetComponent<Unit.UnitManager>().HexUnderUnit);
-                //_hexPath[0].GetComponent<MeshRenderer>().sharedMaterial = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/GoldHex.mat", typeof(Material));
+        //If the unit is close to the target position (value < 0.025f)
+        if(CheckDistanceBetweenUnit()){
+            _targetCylinder.GetComponent<Map.HexManager>().AddUnitToTerrain(this.gameObject, _basedCylinder);
+
+            if(Vector3.Distance(this.transform.position, _targetUnit.transform.position) >= this.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._attackRange * 2){
+                _basedCylinder = this.GetComponent<Unit.UnitManager>().HexUnderUnit;
                 GetClosestEnnemy();
             }
             else{
@@ -54,14 +57,6 @@ public class Movement : MonoBehaviour{
     }
     #endregion MoveUnit
 
-    #region ChangeList
-    /// <summary>
-    /// Remove the gameObject in the list of HEXPATH
-    /// </summary>
-    void cearListGam(){
-        _hexPath.Clear();
-    }
-    #endregion ChangeList
 
     #region CalculatePath
     /// <summary>
@@ -79,33 +74,49 @@ public class Movement : MonoBehaviour{
         }
 
         if(closestGam != null){
-            _target = closestGam;
-            EndCylinder();
+            _targetUnit = closestGam;
+            CalculatePath();
         }
-    }
-
-    /// <summary>
-    /// Get the cylinder
-    /// </summary>
-    void EndCylinder(){
-        _targetCylinder = _target.GetComponent<Unit.UnitManager>().HexUnderUnit;
-        CalculatePath();
     }
 
     /// <summary>
     /// Calculate the path between the two units;
     /// </summary>
     void CalculatePath(){
-        while(_hexPath[_hexPath.Count - 1] != _targetCylinder){
-            Vector3 dir = (_targetCylinder.transform.position - _hexPath[_hexPath.Count - 1].transform.position).normalized;
+        _targetUnitCylinder = _targetUnit.GetComponent<Unit.UnitManager>().HexUnderUnit;
+        Vector3 dir = (_targetUnitCylinder.transform.position - this.transform.position).normalized;
 
-            RaycastHit hit;
-            if(Physics.Raycast(_hexPath[_hexPath.Count - 1].transform.position, dir, out hit, _layer)){
-                _hexPath.Add(hit.collider.gameObject);
-                //hit.collider.gameObject.GetComponent<MeshRenderer>().sharedMaterial = (Material)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/GoldHex.mat", typeof(Material));
-            }
+        RaycastHit hit;
+        if(Physics.Raycast(_basedCylinder.transform.position, dir, out hit, _layer)){
+            _targetCylinder = hit.collider.gameObject;
         }
-        canMoveUnit = true;
+
+        if(_targetCylinder.GetComponent<Map.HexManager>().TargetedUnit == null && _targetCylinder.GetComponent<Map.HexManager>().UnitOnHex == null){
+            canMoveUnit = true;
+            _targetCylinder.GetComponent<Map.HexManager>().AddNextUnitOnHex(this.gameObject);
+        }
+        else{
+            canMoveUnit = false;
+            _targetCylinder = null;
+            _basedCylinder = null;
+        }
     }
     #endregion CalculatePath
+
+    #region Check
+    /// <summary>
+    /// Check if the distance bewteen two units is less than 0.025f
+    /// </summary>
+    /// <returns></returns>
+    bool CheckDistanceBetweenUnit(){
+        if(Mathf.Abs(Vector3.Distance(
+            this.transform.position,
+            new Vector3(_targetCylinder.transform.position.x, this.transform.position.y, _targetCylinder.transform.position.z))) <= 0.025f){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    #endregion Check
 }
