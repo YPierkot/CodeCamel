@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2358.7773, g: 2292.9004, b: 3053.0586, a: 1}
+  m_IndirectSpecularColor: {r: 2356.0166, g: 2289.7441, b: 3049.7227, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,6 +257,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 73
@@ -305,6 +309,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &41563935 stripped
@@ -319,6 +327,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 54
@@ -367,6 +379,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &55619504 stripped
@@ -381,6 +397,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 43
@@ -429,6 +449,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &88863382
@@ -438,6 +462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 38
@@ -486,6 +514,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &96140751 stripped
@@ -505,6 +537,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 20
@@ -553,6 +589,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &137543419 stripped
@@ -783,6 +823,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 64
@@ -831,6 +875,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &185527991 stripped
@@ -845,6 +893,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 67
@@ -893,6 +945,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &193124464 stripped
@@ -912,6 +968,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 17
@@ -960,6 +1020,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &248475961
@@ -969,6 +1033,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 13
@@ -1017,6 +1085,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &260339166
@@ -1026,6 +1098,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 5
@@ -1074,6 +1150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &261189115 stripped
@@ -1093,6 +1173,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 41
@@ -1141,6 +1225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &370449460
@@ -1150,6 +1238,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 4
@@ -1198,6 +1290,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &371879151
@@ -1207,6 +1303,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 32
@@ -1255,6 +1355,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &390172328 stripped
@@ -1350,6 +1454,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 23
@@ -1398,6 +1506,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &493676408 stripped
@@ -1421,6 +1533,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 1667919982, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
+      propertyPath: _player
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1667919982, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
       propertyPath: _unitLife
       value: 10
@@ -1490,6 +1606,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 18
@@ -1538,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &544682748 stripped
@@ -1573,12 +1697,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: _terrainType.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: _terrainType.Array.data[0]
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _terrainType.Array.data[1]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
@@ -1628,6 +1760,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &638058646 stripped
@@ -1642,6 +1778,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 77
@@ -1690,6 +1830,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &664763298
@@ -1699,6 +1843,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 58
@@ -1747,6 +1895,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &680332506
@@ -1756,6 +1908,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 8
@@ -1804,6 +1960,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &684589044 stripped
@@ -1823,6 +1983,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 79
@@ -1871,6 +2035,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &706934482 stripped
@@ -1941,6 +2109,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 63
@@ -1989,6 +2161,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &796265703 stripped
@@ -2003,6 +2179,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 55
@@ -2051,6 +2231,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &801690967
@@ -2060,6 +2244,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 33
@@ -2108,6 +2296,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &804005847 stripped
@@ -2122,6 +2314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 24
@@ -2170,6 +2366,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &840270249 stripped
@@ -2184,6 +2384,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 7
@@ -2232,6 +2436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &850690921
@@ -2241,6 +2449,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 40
@@ -2289,6 +2501,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &851207524 stripped
@@ -2303,6 +2519,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 37
@@ -2351,6 +2571,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &891937927
@@ -2360,6 +2584,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 66
@@ -2408,6 +2636,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &895733370 stripped
@@ -2422,6 +2654,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 74
@@ -2470,6 +2706,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &905071434 stripped
@@ -2489,6 +2729,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 19
@@ -2537,6 +2781,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &958438082
@@ -2546,6 +2794,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 35
@@ -2594,6 +2846,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &998364774
@@ -2603,6 +2859,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 56
@@ -2651,6 +2911,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1001059784 stripped
@@ -2665,6 +2929,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 45
@@ -2713,6 +2981,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1016193320
@@ -2722,6 +2994,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 49
@@ -2770,6 +3046,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1018357018
@@ -2779,6 +3059,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 22
@@ -2827,6 +3111,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1052646544
@@ -2836,6 +3124,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 10
@@ -2884,6 +3176,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1055184835 stripped
@@ -2903,6 +3199,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 76
@@ -2951,6 +3251,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1111778732
@@ -2960,6 +3264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 75
@@ -3008,6 +3316,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1112405866 stripped
@@ -3027,6 +3339,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 61
@@ -3075,6 +3391,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1148703910 stripped
@@ -3089,6 +3409,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 80
@@ -3137,6 +3461,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1191375554 stripped
@@ -3151,6 +3479,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 21
@@ -3199,6 +3531,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1219109695
@@ -3208,6 +3544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 28
@@ -3256,6 +3596,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1241854134 stripped
@@ -3275,6 +3619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 68
@@ -3323,6 +3671,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1304442377
@@ -3332,6 +3684,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 27
@@ -3380,6 +3736,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1310515632 stripped
@@ -3394,6 +3754,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 34
@@ -3442,6 +3806,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1330229726
@@ -3451,6 +3819,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 65
@@ -3499,6 +3871,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1330765205
@@ -3508,6 +3884,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 29
@@ -3556,6 +3936,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1345187984 stripped
@@ -3575,6 +3959,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 14
@@ -3623,6 +4011,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1367155270 stripped
@@ -3637,6 +4029,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 69
@@ -3685,6 +4081,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1384198794 stripped
@@ -3704,6 +4104,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 48
@@ -3752,6 +4156,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1419471358
@@ -3761,6 +4169,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 9
@@ -3809,6 +4221,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1442636920 stripped
@@ -3823,6 +4239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 46
@@ -3871,6 +4291,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1475178086 stripped
@@ -3943,6 +4367,9 @@ MonoBehaviour:
   _isDraggingUnit: 0
   _hasReachTarget: 0
   _unitDragging: {fileID: 0}
+  _startHex: {fileID: 0}
+  _lastHexUnderMouse: {fileID: 0}
+  _targetTransform: {x: 0, y: 0, z: 0}
 --- !u!4 &1518161646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
@@ -3965,6 +4392,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 6
@@ -4013,6 +4444,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1528505215
@@ -4022,6 +4457,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 59
@@ -4070,6 +4509,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1533896564 stripped
@@ -4084,6 +4527,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 50
@@ -4132,6 +4579,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1547089094
@@ -4141,6 +4592,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 26
@@ -4189,6 +4644,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1547697887 stripped
@@ -4213,6 +4672,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 15
@@ -4261,6 +4724,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1600427635
@@ -4270,6 +4737,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 72
@@ -4318,6 +4789,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1613572508
@@ -4327,6 +4802,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 1
@@ -4375,8 +4854,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+--- !u!1 &1633488525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 190725985612094234, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
+  m_PrefabInstance: {fileID: 508232706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1651949440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
@@ -4389,6 +4877,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 57
@@ -4437,6 +4929,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1689104036
@@ -4446,6 +4942,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 3
@@ -4494,6 +4994,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1696501626 stripped
@@ -4513,6 +5017,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 39
@@ -4561,6 +5069,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1726382207 stripped
@@ -4575,6 +5087,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 44
@@ -4623,6 +5139,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1752607126
@@ -4632,6 +5152,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 47
@@ -4680,6 +5204,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1756100872 stripped
@@ -4694,6 +5222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 36
@@ -4742,6 +5274,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1778747036
@@ -4751,6 +5287,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 62
@@ -4799,6 +5339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1784776181 stripped
@@ -4813,6 +5357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 12
@@ -4861,6 +5409,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &1807185239
@@ -4870,6 +5422,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 70
@@ -4918,6 +5474,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1 &1823688464
@@ -5125,6 +5685,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 0
@@ -5173,6 +5737,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1869596906 stripped
@@ -5180,6 +5748,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
   m_PrefabInstance: {fileID: 1179398778}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1875706695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1875706696}
+  - component: {fileID: 1875706697}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1875706696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875706695}
+  m_LocalRotation: {x: -0, y: -0.7071057, z: -0, w: 0.7071079}
+  m_LocalPosition: {x: 8.879, y: 1.85, z: 3.507}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1875706697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875706695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c7275ae7667f84883bca46fdd8f300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1875706695}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4096
+  _targetCylinder: {fileID: 0}
+  _unit: {fileID: 1633488525}
+  _hexPath: []
 --- !u!4 &1880174203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
@@ -5192,6 +5810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 31
@@ -5240,6 +5862,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1896067781 stripped
@@ -5254,6 +5880,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 53
@@ -5302,6 +5932,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1931534426 stripped
@@ -5316,6 +5950,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 78
@@ -5364,6 +6002,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1958994558 stripped
@@ -5378,6 +6020,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 11
@@ -5426,6 +6072,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &1990272834 stripped
@@ -5440,6 +6090,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 60
@@ -5488,6 +6142,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1 &2013410473
@@ -5547,6 +6205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 2
@@ -5595,6 +6257,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &2045925667
@@ -5604,6 +6270,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 52
@@ -5652,6 +6322,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &2057594447 stripped
@@ -5666,6 +6340,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 25
@@ -5714,6 +6392,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &2075755198 stripped
@@ -5733,6 +6415,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 71
@@ -5781,6 +6467,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &2109479161 stripped
@@ -5800,6 +6490,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 42
@@ -5848,6 +6542,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b875a51d1381c4cb2620d777963da7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &2123075040
@@ -5857,6 +6555,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 30
@@ -5905,6 +6607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &2139033581
@@ -5914,6 +6620,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 51
@@ -5962,6 +6672,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &2144609714
@@ -5971,6 +6685,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2806962}
     m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
       propertyPath: m_Name
       value: cylinder 16
@@ -6019,6 +6737,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!1001 &190725984015756151
@@ -6033,6 +6755,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 1667919982, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
+      propertyPath: _player
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667919982, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
+      propertyPath: _unitLife
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667919982, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
       propertyPath: _unitScriptable
       value: 
       objectReference: {fileID: 11400000, guid: 83e0e35e18cfedd4e9b6af9572270035, type: 2}
@@ -6046,7 +6776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190725985612094233, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.52
+      value: 7.63
       objectReference: {fileID: 0}
     - target: {fileID: 190725985612094233, guid: 7639398e97d0f1942b4b58c8e6c3da13, type: 3}
       propertyPath: m_LocalPosition.y

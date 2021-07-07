@@ -7,11 +7,11 @@ namespace Map {
 
     public class MapGeneration : MonoBehaviour{
         #region Variables
-        [Header("Map Size")]
+        //MAP INFORMATION
         [SerializeField] private int _xSize = 0;
         [SerializeField] private int _ySize = 0;
 
-        [Header("Map Gam")]
+        //MAP HEX GAMEOBJECT
         [SerializeField] private GameObject _meshToCreate = null;
 
         //PUBLIC VARIABLES
