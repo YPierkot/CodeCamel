@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitName: Unit 1
   _unitFamily: 1
-  _unitElement: 2
+  _unitElement: 
   _life: 10
-  _damage: 10
-  _fireRate: 10
-  _moveSpeed: 10
+  _attackPerSecond: 0
+  _critChance: 0
+  _critValueMultiplier: 0
+  _evasionRate: 0
+  _attackRange: 1
+  _moveSPeed: 1
   _basicMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}

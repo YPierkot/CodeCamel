@@ -50,7 +50,7 @@ namespace Unit{
             unitV._critValueMultiplier = this._critValueMultiplier;
             unitV._evasionRate = this._evasionRate;
             unitV._attackRange = this._attackRange;
-            unitV._moveSPeed = this._moveSPeed;
+            unitV._moveSpeed = this._moveSPeed;
             unitV._basicMesh = this._basicMesh;
             return unitV;
         }
@@ -93,7 +93,7 @@ namespace Unit{
         public float _critValueMultiplier;
         public float _evasionRate;
         public float _attackRange;
-        public float _moveSPeed;
+        public float _moveSpeed;
 
         public Mesh _basicMesh;
     }
