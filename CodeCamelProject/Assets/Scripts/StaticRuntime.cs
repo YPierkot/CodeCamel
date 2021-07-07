@@ -20,6 +20,11 @@ public static class StaticRuntime
         }
     }
 
+    /// <summary>
+    /// Get all the neighboor from a hex
+    /// </summary>
+    /// <param name="baseCylinder"></param>
+    /// <returns></returns>
     public static List<GameObject> getNeighboorList(GameObject baseCylinder){
         return new List<GameObject>();
     }
