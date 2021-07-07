@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2625.747, g: 2529.3418, b: 3245.1094, a: 1}
+  m_IndirectSpecularColor: {r: 2625.1611, g: 2527.4844, b: 3239.5547, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1453,6 +1453,75 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 180d64f397c38cb4ca25c6bd047327dc, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+--- !u!1001 &381152597
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _playerCanPose
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603259260, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: _terrainType.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 441702617158402057, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Name
+      value: cylinder Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2302818
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 966847424656448179, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099172484128039388, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43cb3a16accd7744797e4b86dd8ba98e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 837e0f54976fe09429edc36f9ab31b5a, type: 3}
 --- !u!4 &390172328 stripped

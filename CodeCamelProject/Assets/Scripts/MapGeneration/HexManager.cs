@@ -9,20 +9,23 @@ namespace Map
 {
     public class HexManager : MonoBehaviour{
         #region Variables
-        [Header("Terrain Type")]
-        //Terrain effect on the hex
+        //TERRAIN TYPE
+        [Tooltip("List of terrain Effects")]
         [SerializeField] private List<EnumScript.TerrainType> _terrainType = new List<EnumScript.TerrainType>();
 
-        //Player who can put a Unit on the Hex
+        [Tooltip("Which player can put his Unit on")]
         [SerializeField] private PlayerSide _playerCanPose = PlayerSide.BluePlayer;
-        public PlayerSide PlayerCanPose { get => _playerCanPose; }
 
-        [Header("Unit On Hex")]
-        //Which Unit is on the hex
+        //UNIT ON HEX
+        [Tooltip("The actual Unit on this Hex")]
         private GameObject _unitOnHex = null;
-        public GameObject UnitOnHex { get => _unitOnHex; }
-
+        [Tooltip("The Unit who will come to this Hex")]
         private GameObject _targetedUnit = null;
+
+
+        //PUBLIC VARIABLES
+        public PlayerSide PlayerCanPose { get => _playerCanPose; }
+        public GameObject UnitOnHex { get => _unitOnHex; }
         public GameObject TargetedUnit { get => _targetedUnit; set => _targetedUnit = value; }
         #endregion Variables
 
@@ -87,6 +90,7 @@ namespace Map
         }
         #endregion UnitOnTerrain
 
+#if UNITY_EDITOR
         /// <summary>
         /// Change the color of the hex
         /// </summary>
@@ -103,6 +107,7 @@ namespace Map
                     break;
             }
         }
+#endif
     }
 
     /// <summary>

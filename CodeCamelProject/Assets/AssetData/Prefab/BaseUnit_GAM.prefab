@@ -149,10 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c7275ae7667f84883bca46fdd8f300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layer:
-    serializedVersion: 2
-    m_Bits: 4096
   _targetUnit: {fileID: 0}
   _targetUnitCylinder: {fileID: 0}
   _basedCylinder: {fileID: 0}
   _targetCylinder: {fileID: 0}
+  canMoveUnit: 0

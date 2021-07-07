@@ -5,9 +5,11 @@ using UnityEditor;
 
 [CustomEditor(typeof(Map.MapGeneration))]
 public class MapGenerationEditor : Editor{
+    #region Variables
     SerializedProperty xSizeProperty;
     SerializedProperty ySizeProperty;
     SerializedProperty objectProperty;
+    #endregion Variables
 
     private void OnEnable(){
         xSizeProperty = serializedObject.FindProperty("_xSize");
@@ -18,39 +20,39 @@ public class MapGenerationEditor : Editor{
     public override void OnInspectorGUI(){
         Map.MapGeneration script = (Map.MapGeneration)target;
 
-        GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+        #region GridInfo
+        StaticEditor.VerticalBox();
         GUILayout.Label("MAP CREATION", StaticEditor.labelTitleStyle);
 
-        StaticEditor.Space(10);
-
         GUILayout.BeginHorizontal();
-        GUILayout.Label("OBJECT TO SPAWN :", StaticEditor.labelTitleStyle);
+        GUILayout.Label("OBJECT TO SPAWN :", StaticEditor.labelStyle);
         EditorGUILayout.PropertyField(objectProperty, GUIContent.none);
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
-        GUILayout.Label("X :", StaticEditor.labelTitleStyle);
+        GUILayout.Label("X :", StaticEditor.labelStyle);
         EditorGUILayout.PropertyField(xSizeProperty, GUIContent.none);
         xSizeProperty.intValue = Mathf.Clamp(xSizeProperty.intValue, 0, 15);
         serializedObject.ApplyModifiedProperties();
 
         StaticEditor.Space(5);
 
-        GUILayout.Label("Y :", StaticEditor.labelTitleStyle);
+        GUILayout.Label("Y :", StaticEditor.labelStyle);
         EditorGUILayout.PropertyField(ySizeProperty, GUIContent.none);
         ySizeProperty.intValue = Mathf.Clamp(ySizeProperty.intValue, 0, 15);
         serializedObject.ApplyModifiedProperties();
         StaticEditor.Space(5);
         GUILayout.EndHorizontal();
 
-        GUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-        if(GUILayout.Button("Create Terrain", StaticEditor.buttonTitleStyle)){
+        GUILayout.BeginHorizontal();
+        if(GUILayout.Button("Create Terrain", StaticEditor.buttonStyle)){
             script.GenerateMap();
         }
-        if(GUILayout.Button("Delete Terrain", StaticEditor.buttonTitleStyle)){
+        if(GUILayout.Button("Delete Terrain", StaticEditor.buttonStyle)){
             script.DeleteMap();
         }
         GUILayout.EndHorizontal();
         GUILayout.EndVertical();
+        #endregion GridInfo
     }
 }

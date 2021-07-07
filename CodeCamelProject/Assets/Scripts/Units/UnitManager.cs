@@ -25,10 +25,11 @@ namespace Unit{
         [Tooltip("The Hexagone on which the Unit is going to go")]
         [SerializeField] private GameObject _nextHex = null;
 
-        //GET VARIABLES
+        //PUBLIC VARIABLES
         public GameObject HexUnderUnit => _hexUnderUnit;
         public EnumScript.PlayerSide Player => _player;
         public bool runTimeData { get; set; }
+        public GameObject NextHex { get => _nextHex; set => _nextHex = value; }
         #endregion Variables
 
         #region Data
