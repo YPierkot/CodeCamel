@@ -20,7 +20,7 @@ public class HexManagerEditor : Editor{
 
         //Which player can put units on this hex
         GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-        GUILayout.Label("WHICH PLAYER CAN PUT UNIT ON :", StaticEditor.labelStyle);
+        GUILayout.Label("WHICH PLAYER CAN PUT UNIT ON :", StaticEditor.labelTitleStyle);
         GUILayout.BeginHorizontal();
         EditorGUILayout.PropertyField(playerProperty, GUIContent.none);
         serializedObject.ApplyModifiedProperties();
@@ -35,7 +35,7 @@ public class HexManagerEditor : Editor{
 
         //Which effect are on this hex
         GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-        GUILayout.Label("TERRAIN EFFECT", StaticEditor.labelStyle);
+        GUILayout.Label("TERRAIN EFFECT", StaticEditor.labelTitleStyle);
 
         int lastindex = 0;
         for(int effect = 0; effect < effectProperty.arraySize; effect++){
@@ -43,7 +43,7 @@ public class HexManagerEditor : Editor{
             var terEffect = effectProperty.GetArrayElementAtIndex(effect);
             EditorGUILayout.PropertyField(terEffect, GUIContent.none);
             serializedObject.ApplyModifiedProperties();
-            if(GUILayout.Button("-", StaticEditor.buttonStyle, GUILayout.Width(20))){
+            if(GUILayout.Button("-", StaticEditor.buttonTitleStyle, GUILayout.Width(20))){
                 effectProperty.DeleteArrayElementAtIndex(effect);
                 serializedObject.ApplyModifiedProperties();
             }
@@ -51,7 +51,7 @@ public class HexManagerEditor : Editor{
             lastindex = effect;
         }
 
-        if(GUILayout.Button("Add effect", StaticEditor.buttonStyle)){
+        if(GUILayout.Button("Add effect", StaticEditor.buttonTitleStyle)){
             effectProperty.InsertArrayElementAtIndex(lastindex == 0? 0 : lastindex + 1);
             serializedObject.ApplyModifiedProperties();
         }
@@ -62,7 +62,7 @@ public class HexManagerEditor : Editor{
 
         //Which unit is on this hex
         GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-        GUILayout.Label("UNIT ON HEX", StaticEditor.labelStyle);
+        GUILayout.Label("UNIT ON HEX", StaticEditor.labelTitleStyle);
         GUI.enabled = false;
         EditorGUILayout.ObjectField(script.UnitOnHex, typeof(GameObject), allowSceneObjects: true);
         GUI.enabled = true;

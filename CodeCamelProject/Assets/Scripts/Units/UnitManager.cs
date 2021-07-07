@@ -6,28 +6,32 @@ namespace Unit{
     [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
     public class UnitManager : MonoBehaviour{
         #region Variables
+        //UNIT
+        [Tooltip("The ScriptableObject which contain every data of this Unit")]
         public Units_SO _unitScriptable = null;
-
-        [Header("Unit")]
+        [Tooltip("Which player posess this Unit")]
         [SerializeField, Range(0, 1)] private EnumScript.PlayerSide _player = EnumScript.PlayerSide.None;
 
-        [Header("Unit Stat")]
-        [SerializeField] private float _unitLife = 0f; //LIFE
-        [SerializeField] private float _manaGain = 0f; //MANA
-        [SerializeField] private float _manaMax = 0f;  //MANA
-
-        [Header("Hex")]
+        //UNIT DATA
+        [Tooltip("Actual life of this Unit")]
+        [SerializeField] private float _unitLife = 0f;
+        [Tooltip("Actual Mana of this Unit")]
+        [SerializeField] private float _manaGain = 0f;
+        [Tooltip("The Hexagone which is under this Unit")]
         [SerializeField] private GameObject _hexUnderUnit = null;
+        [Space(5)]
+        [Tooltip("If the Unit move")]
+        [SerializeField] private bool _isMoving = false;
+        [Tooltip("The Hexagone on which the Unit is going to go")]
+        [SerializeField] private GameObject _nextHex = null;
 
-        //PUBLIC VARIABLES
-        public float ManaGain { get => _manaGain; } //ACTUAL MANA
-        public float ManaMax { get => _manaMax; } //MANA FOR POWER
-        public float UnitLife { get => _unitLife; } //ACTUAL LIFE
-        public bool runTimeData { get; set; } //ACTUAL LIFE
-        public GameObject HexUnderUnit { get => _hexUnderUnit; } //ACTUAL HEX UNDER UNIT
-        public EnumScript.PlayerSide Player { get => _player; set => _player = value; } //WHICH PLAYER POSESS THIS UNIT
+        //GET VARIABLES
+        public GameObject HexUnderUnit => _hexUnderUnit;
+        public EnumScript.PlayerSide Player => _player;
+        public bool runTimeData { get; set; }
         #endregion Variables
 
+        #region Data
         /// <summary>
         /// Refresh all the data of the object
         /// </summary>
@@ -43,13 +47,13 @@ namespace Unit{
 
                 this.gameObject.name = "BaseUnit : " + unitVar._unitName;
                 _unitLife = unitVar._life;
-                _manaMax = 10;
             }
             else{
                 GetComponent<MeshFilter>().sharedMesh = null;
                 GetComponent<MeshCollider>().sharedMesh = null;
             }
         }
+        #endregion Data
 
         #region UnitMethods
         /// <summary>
@@ -75,7 +79,6 @@ namespace Unit{
         }
         #endregion HexTile
 
-        //RELOAD ALL THE DATA FROM THE SCRIPTABLEOBJECT
 #if UNITY_EDITOR
         /// <summary>
         /// If there is any changement to the variables
