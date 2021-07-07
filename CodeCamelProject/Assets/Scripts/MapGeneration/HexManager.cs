@@ -54,20 +54,22 @@ namespace Map
         }
         #endregion UnitOnTerrain
 
-        /*
-        private void OnDrawGizmos(){
+        /// <summary>
+        /// Change the color of the hex
+        /// </summary>
+        public void ChangeColor(){
             switch(_playerCanPose){
                 case PlayerSide.None:
-                    GetComponent<MeshRenderer>().sharedMaterial = (Material) AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/White.mat", typeof(Material));
+                    GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/White.mat", typeof(Material));
                     break;
                 case PlayerSide.RedPlayer:
-                    GetComponent<MeshRenderer>().sharedMaterial = (Material) AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/RedHex.mat", typeof(Material));
+                    GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/RedHex.mat", typeof(Material));
                     break;
                 case PlayerSide.BluePlayer:
-                    GetComponent<MeshRenderer>().sharedMaterial = (Material) AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/BlueHex.mat", typeof(Material));
+                    GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/BlueHex.mat", typeof(Material));
                     break;
             }
-        }*/
+        }
     }
 
     /// <summary>

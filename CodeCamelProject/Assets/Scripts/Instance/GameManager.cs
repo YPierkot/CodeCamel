@@ -33,6 +33,17 @@ public class GameManager : MonoSingleton<GameManager>{
     [ReadOnly, SerializeField] private GameObject _startHex = null;
     [ReadOnly, SerializeField] private GameObject _lastHexUnderMouse = null;
     [ReadOnly, SerializeField]  private Vector3 _targetTransform;
+
+
+    [Header("Unit Info")]
+    [SerializeField] private List<GameObject> _redPlayerUnit = new List<GameObject>();
+    [SerializeField] private List<GameObject> _bluePlayerUnit = new List<GameObject>();
+
+    public List<GameObject> RedPlayerUnit { get => _redPlayerUnit; set => _redPlayerUnit = value; }
+    public List<GameObject> BluePlayerUnit { get => _bluePlayerUnit; set => _bluePlayerUnit = value; }
+
+
+
     #endregion Variables
 
     private void Start(){
