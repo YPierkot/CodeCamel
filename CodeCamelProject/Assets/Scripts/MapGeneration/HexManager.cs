@@ -1,22 +1,21 @@
+using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static EnumScript;
-using static GameManager;
+
 
 namespace Map
 {
-    public class HexManager : MonoBehaviour
-    {
+    public class HexManager : MonoBehaviour{
         #region Variables
         [Header("Terrain Type")]
         //Terrain effect on the hex
         [SerializeField] private List<EnumScript.TerrainType> _terrainType = new List<EnumScript.TerrainType>();
-        public List<EnumScript.TerrainType> TerrainType { get => _terrainType; set => _terrainType = value; }
 
         //Player who can put a Unit on the Hex
         [SerializeField] private PlayerSide _playerCanPose = PlayerSide.BluePlayer;
-        public PlayerSide PlayerCanPose { get => _playerCanPose; set => _playerCanPose = value; }
+        public PlayerSide PlayerCanPose { get => _playerCanPose; }
 
         [Header("Unit On Hex")]
         //Which Unit is on the hex
@@ -55,18 +54,20 @@ namespace Map
         }
         #endregion UnitOnTerrain
 
+        /*
         private void OnDrawGizmos(){
             switch(_playerCanPose){
                 case PlayerSide.None:
+                    GetComponent<MeshRenderer>().sharedMaterial = (Material) AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/White.mat", typeof(Material));
                     break;
                 case PlayerSide.RedPlayer:
-                    Gizmos.DrawIcon(transform.position + new Vector3(0, GetComponent<MeshCollider>().bounds.size.y / 1.8f, 0), "sv_icon_name6", true);
+                    GetComponent<MeshRenderer>().sharedMaterial = (Material) AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/RedHex.mat", typeof(Material));
                     break;
                 case PlayerSide.BluePlayer:
-                    Gizmos.DrawIcon(transform.position + new Vector3(0, GetComponent<MeshCollider>().bounds.size.y / 1.8f, 0), "sv_icon_name1", true);
+                    GetComponent<MeshRenderer>().sharedMaterial = (Material) AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/BlueHex.mat", typeof(Material));
                     break;
             }
-        }
+        }*/
     }
 
     /// <summary>

@@ -9,7 +9,7 @@ namespace Unit{
         public Units_SO _unitScriptable = null;
 
         [Header("Unit")]
-        [SerializeField, Range(0,1)] private int _player = 0;
+        [SerializeField, Range(0, 1)] private EnumScript.PlayerSide _player = EnumScript.PlayerSide.None;
 
         [Header("Unit Stat")]
         [SerializeField] private float _unitLife = 0f; //LIFE
@@ -25,7 +25,7 @@ namespace Unit{
         public float UnitLife { get => _unitLife; } //ACTUAL LIFE
         public bool runTimeData { get; set; } //ACTUAL LIFE
         public GameObject HexUnderUnit { get => _hexUnderUnit; } //ACTUAL HEX UNDER UNIT
-        public int Player { get => _player; set => _player = value; } //WHICH PLAYER POSESS THIS UNIT
+        public EnumScript.PlayerSide Player { get => _player; set => _player = value; } //WHICH PLAYER POSESS THIS UNIT
         #endregion Variables
 
         /// <summary>
@@ -73,8 +73,7 @@ namespace Unit{
         public void ChangeHexUnderUnit(GameObject hex = null){
             _hexUnderUnit = hex;
         }
-
-#endregion HexTile
+        #endregion HexTile
 
         //RELOAD ALL THE DATA FROM THE SCRIPTABLEOBJECT
 #if UNITY_EDITOR

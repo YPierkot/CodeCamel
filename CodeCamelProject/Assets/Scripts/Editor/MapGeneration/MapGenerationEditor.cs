@@ -5,6 +5,16 @@ using UnityEditor;
 
 [CustomEditor(typeof(Map.MapGeneration))]
 public class MapGenerationEditor : Editor{
+    SerializedProperty xSizeProperty;
+    SerializedProperty ySizeProperty;
+    SerializedProperty objectProperty;
+
+    private void OnEnable(){
+        xSizeProperty = serializedObject.FindProperty("_xSize");
+        ySizeProperty = serializedObject.FindProperty("_ySize");
+        objectProperty = serializedObject.FindProperty("_meshToCreate");
+    }
+
     public override void OnInspectorGUI(){
         Map.MapGeneration script = (Map.MapGeneration)target;
 
@@ -13,14 +23,23 @@ public class MapGenerationEditor : Editor{
 
         StaticEditor.Space(10);
 
-        script.MeshToCreate = (GameObject)EditorGUILayout.ObjectField("Prefab to Use", script.MeshToCreate, typeof(GameObject), allowSceneObjects: true);
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("OBJECT TO SPAWN :", StaticEditor.labelStyle);
+        EditorGUILayout.PropertyField(objectProperty, GUIContent.none);
+        GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("X :", StaticEditor.labelStyle);
-        script.XSize = EditorGUILayout.IntField((int) Mathf.Clamp(script.XSize, 0, 15));
+        EditorGUILayout.PropertyField(xSizeProperty, GUIContent.none);
+        xSizeProperty.intValue = Mathf.Clamp(xSizeProperty.intValue, 0, 15);
+        serializedObject.ApplyModifiedProperties();
+
         StaticEditor.Space(5);
+
         GUILayout.Label("Y :", StaticEditor.labelStyle);
-        script.YSize = EditorGUILayout.IntField((int)Mathf.Clamp(script.YSize, 0, 15));
+        EditorGUILayout.PropertyField(ySizeProperty, GUIContent.none);
+        ySizeProperty.intValue = Mathf.Clamp(ySizeProperty.intValue, 0, 15);
+        serializedObject.ApplyModifiedProperties();
         StaticEditor.Space(5);
         GUILayout.EndHorizontal();
 

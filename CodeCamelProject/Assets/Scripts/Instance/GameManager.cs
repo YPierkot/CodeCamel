@@ -28,9 +28,11 @@ public class GameManager : MonoSingleton<GameManager>{
     [SerializeField] private float _dragSpeed = 0f;
     [ReadOnly, SerializeField] private bool _isDraggingUnit = false;
     [ReadOnly, SerializeField] private bool _hasReachTarget = false;
+    [Space(5)]
     [ReadOnly, SerializeField] private GameObject _unitDragging = null;
     [ReadOnly, SerializeField] private GameObject _startHex = null;
-    Vector3 _targetTransform;
+    [ReadOnly, SerializeField] private GameObject _lastHexUnderMouse = null;
+    [ReadOnly, SerializeField]  private Vector3 _targetTransform;
     #endregion Variables
 
     private void Start(){
@@ -47,20 +49,27 @@ public class GameManager : MonoSingleton<GameManager>{
             StopDragging();
         }
 
-        if(_isDraggingUnit && _cylinderUnderMouse != null) {
-            _unitDragging.transform.position = Vector3.Lerp(_unitDragging.transform.position, _targetTransform, Time.deltaTime * _dragSpeed);
-            if(Vector3.Distance(_unitDragging.transform.position, _targetTransform) < 0.01f) {
-                _hasReachTarget = true;
+        if(_isDraggingUnit) {
+            if(_lastHexUnderMouse != null){
+                _unitDragging.transform.position = Vector3.Lerp(_unitDragging.transform.position, _targetTransform, Time.deltaTime * _dragSpeed);
+                if(Vector3.Distance(_unitDragging.transform.position, _targetTransform) < 0.01f){
+                    _hasReachTarget = true;
+                }
+                else{
+                    _hasReachTarget = false;
+                }
             }
             else{
-                _hasReachTarget = false;
+                _hasReachTarget = true;
             }
         }
-        else if(_hasReachTarget == false){
+        else if(!_hasReachTarget && !_isDraggingUnit){
             _unitDragging.transform.position = Vector3.Lerp(_unitDragging.transform.position, _targetTransform, Time.deltaTime * _dragSpeed);
             if(Vector3.Distance(_unitDragging.transform.position, _targetTransform) < 0.01f){
                 _hasReachTarget = true;
                 _unitDragging = null;
+                _targetTransform = Vector3.zero;
+                _lastHexUnderMouse = null;
             }
         }
     }
@@ -97,11 +106,11 @@ public class GameManager : MonoSingleton<GameManager>{
     /// </summary>
     void StartDragging(){
         if(checkForDragging()){
-            _isDraggingUnit = true;
             _unitDragging = _unitUnderMouse;
+            _isDraggingUnit = true;
+            _hasReachTarget = false;
             cylinderChange += MoveUnitWhenDragging;
             if(_unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit != null) _startHex = _unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit;
-            MoveUnitWhenDragging();
         }
     }
 
@@ -112,11 +121,14 @@ public class GameManager : MonoSingleton<GameManager>{
         if(_isDraggingUnit){
             _isDraggingUnit = false;
             cylinderChange -= MoveUnitWhenDragging;
-            _cylinderUnderMouse.GetComponent<Map.HexManager>().AddUnitToTerrain(_unitDragging, _startHex);
+            if(_lastHexUnderMouse != null) _lastHexUnderMouse.GetComponent<Map.HexManager>().AddUnitToTerrain(_unitDragging, _startHex);
             _startHex = null;
 
+            //If goal is reach
             if(_hasReachTarget){
                 _unitDragging = null;
+                _targetTransform = Vector3.zero;
+                _lastHexUnderMouse = null;
             }
         }
     }
@@ -125,13 +137,22 @@ public class GameManager : MonoSingleton<GameManager>{
     /// move the unit on top of a cylinder
     /// </summary>
     void MoveUnitWhenDragging(){
-        if(_cylinderUnderMouse == null) return;
-        _targetTransform = new Vector3(
-            _cylinderUnderMouse.transform.position.x,
-            _cylinderUnderMouse.transform.position.y + (_cylinderUnderMouse.GetComponent<MeshCollider>().bounds.size.y / 2) + (_unitDragging.GetComponent<MeshCollider>().bounds.size.y / 2), 
-            _cylinderUnderMouse.transform.position.z);
-    }
+        if(_cylinderUnderMouse != null){
+            if(_cylinderUnderMouse.GetComponent<Map.HexManager>().PlayerCanPose == _unitDragging.GetComponent<Unit.UnitManager>().Player){
+                _lastHexUnderMouse = _cylinderUnderMouse;
+            }
 
+        }
+        else{
+            _lastHexUnderMouse = _unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit;
+        }
+
+        if(_lastHexUnderMouse != null){
+            _targetTransform = new Vector3(_lastHexUnderMouse.transform.position.x,
+            _lastHexUnderMouse.transform.position.y + (_cylinderUnderMouse.GetComponent<MeshCollider>().bounds.size.y / 2) + (_unitDragging.GetComponent<MeshCollider>().bounds.size.y / 2),
+            _lastHexUnderMouse.transform.position.z);
+        }
+    }
     #endregion DraggingUnit
 
     #region CheckMouse
