@@ -5,32 +5,56 @@ using UnityEditor;
 
 [CustomEditor(typeof(Unit.UnitManager))]
 public class UnitManagerEditor : Editor{
-    SerializedProperty SOproperty;
-    SerializedProperty armyProperty;
+    #region Variables
+    //UNIT
+    SerializedProperty _scriptableProperty;
+    SerializedProperty _armyProperty;
 
+    //UNIT DATA
+    SerializedProperty _actualLifeProperty;
+    SerializedProperty _actualManaProperty;
+    SerializedProperty _actualHexProperty;
+
+    SerializedProperty _isMovingProperty;
+    SerializedProperty _nextHexProperty;
+    #endregion Variables
+
+    /// <summary>
+    /// Update the variable when the object is selected
+    /// </summary>
     private void OnEnable(){
-        SOproperty = serializedObject.FindProperty("_unitScriptable");
-        armyProperty = serializedObject.FindProperty("_player");
+        //UNIT
+        _scriptableProperty = serializedObject.FindProperty("_unitScriptable");
+        _armyProperty = serializedObject.FindProperty("_player");
 
-        //Refresh the object
-        Unit.UnitManager script = (Unit.UnitManager)target;
+        //UNIT DATA
+        _actualLifeProperty = serializedObject.FindProperty("_unitLife");
+        _actualManaProperty = serializedObject.FindProperty("_manaGain");
+        _actualHexProperty = serializedObject.FindProperty("_hexUnderUnit");
+
+        _isMovingProperty = serializedObject.FindProperty("_isMoving");
+        _nextHexProperty = serializedObject.FindProperty("_nextHex");
     }
 
     /// <summary>
-    /// Draw the inspector
+    /// Redraw the inspector with a custom one
     /// </summary>
     public override void OnInspectorGUI(){
         serializedObject.Update();
-        Unit.UnitManager script = (Unit.UnitManager)target;
 
+        //ScriptableData
+        Unit.UnitManager script = (Unit.UnitManager)target;
         Unit.UnitVariables unitVar = new Unit.UnitVariables();
         if(script._unitScriptable != null) unitVar = script._unitScriptable.GetStat();
 
-        //Show the ScriptableObject Slot and a button to refresh the variable
-        GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+        #region ScriptableObject
+        StaticEditor.VerticalBox();
+        GUILayout.Label("SCRIPTABLE DATA", StaticEditor.labelTitleStyle);
         GUILayout.BeginHorizontal();
-        EditorGUILayout.PropertyField(SOproperty, new GUIContent("Unit Scriptable"));
+        GUILayout.Label("Unit Data :", StaticEditor.labelStyle);
+        EditorGUILayout.PropertyField(_scriptableProperty, GUIContent.none);
         serializedObject.ApplyModifiedProperties();
+
         if(script._unitScriptable != null){
             if(GUILayout.Button(new GUIContent(EditorGUIUtility.IconContent("d_Refresh", "Refresh all the data of this unit")), GUILayout.Width(30))){
                 if(script._unitScriptable != null) script.RefreshData();
@@ -43,71 +67,94 @@ public class UnitManagerEditor : Editor{
             }
         }
         GUILayout.EndHorizontal();
-        GUILayout.BeginHorizontal();
-        if(script._unitScriptable != null){
-            if(GUILayout.Button("CHANGE ARMY")){
-                armyProperty.enumValueIndex = armyProperty.enumValueIndex == 1 ? 2 : 1;
-                serializedObject.ApplyModifiedProperties();
-            }
-            GUILayout.Label($"ARMY : {(EnumScript.PlayerSide) armyProperty.enumValueIndex}", StaticEditor.labelStyle);
-        }
-        GUILayout.EndHorizontal();
         GUILayout.EndVertical();
-
-        if(script._unitScriptable == null) return;
+        #endregion ScriptableObject
 
         StaticEditor.Space(5);
-        GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-        if(GUILayout.Button(script.runTimeData? "CLOSE RUNTIME DATA" : "OPEN RUNTIME DATA", StaticEditor.buttonStyle,  GUILayout.ExpandWidth(true))){
+
+        #region Army
+        StaticEditor.VerticalBox();
+        GUILayout.Label("PLAYER ARMY", StaticEditor.labelTitleStyle);
+        string[] enumList = { "None", "Red Player", "Blue Player" };
+
+        _armyProperty.enumValueIndex = GUILayout.Toolbar(_armyProperty.enumValueIndex, enumList);
+        serializedObject.ApplyModifiedProperties();
+
+        GUILayout.EndVertical();
+        #endregion Army
+
+        StaticEditor.Space(5);
+
+        #region RuntimeData
+        StaticEditor.VerticalBox();
+        if(GUILayout.Button(script.runTimeData ? "CLOSE RUNTIME DATA" : "OPEN RUNTIME DATA", StaticEditor.buttonTitleStyle)){
             script.runTimeData = !script.runTimeData;
         }
 
         if(script.runTimeData){
             int iconSize = 20;
-
-            //MANA PROGRESS BAR
-            GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-            GUILayout.Label("UNIT STAT", StaticEditor.labelStyle);
+            StaticEditor.VerticalBox();
+            GUILayout.Label("UNIT STAT", StaticEditor.labelTitleStyle);
 
             //LIFE PROGRESS BAR
             GUILayout.BeginHorizontal();
             GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Life.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
-            StaticEditor.ProgressBar(script.UnitLife / unitVar._life, $"Life : {script.UnitLife} / {unitVar._life}");
+            StaticEditor.ProgressBar(_actualLifeProperty.floatValue / unitVar._life, $"Life : {_actualLifeProperty.floatValue} / {unitVar._life}");
+
             //DEAL DAMAGE
             if(GUILayout.Button("-", GUILayout.Width(20))){
-                if(script.UnitLife - 1 >= 0) script.TakeDamage(1);
+                if(_actualLifeProperty.floatValue - 1 >= 0) script.TakeDamage(1);
                 else Debug.LogError("Can't deal more damage. The UnitLife is already at 0");
             }
             //GIVE LIFE
             if(GUILayout.Button("+", GUILayout.Width(20))){
-                if(script.UnitLife + 1 <= unitVar._life) script.TakeDamage(-1);
+                if(_actualLifeProperty.floatValue + 1 <= unitVar._life) script.TakeDamage(-1);
                 else Debug.LogError($"Can't give more life to the unit. The Unit is already at maxLife : {unitVar._life}");
             }
             GUILayout.EndHorizontal();
 
+            //MANA
             GUILayout.BeginHorizontal();
             GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Mana.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
-            StaticEditor.ProgressBar(script.ManaGain / script.ManaMax, $"Mana : {script.ManaGain} / {script.ManaMax}");
+            StaticEditor.ProgressBar(_actualManaProperty.floatValue / 10, $"Mana : {_actualManaProperty.floatValue} / {10}");
             //REDUCE MANA
             if(GUILayout.Button("-", GUILayout.Width(20))){
-                if(script.ManaGain - 1 >= 0) script.AddMana(-1);
+                if(_actualManaProperty.floatValue - 1 >= 0) script.AddMana(-1);
                 else Debug.LogError("Can't reduce mana anymore. The UnitMana is already at 0");
             }
             //GIVE MANA
             if(GUILayout.Button("+", GUILayout.Width(20))){
-                if(script.ManaGain + 1 <= script.ManaMax) script.AddMana(1);
-                else Debug.LogError($"Can't give more mana to the unit. The Unit is already at maxMana : {script.ManaMax}");
+                if(_actualManaProperty.floatValue + 1 <= 10) script.AddMana(1);
+                else Debug.LogError($"Can't give more mana to the unit. The Unit is already at maxMana : {10}");
             }
             GUILayout.EndHorizontal();
             GUILayout.EndVertical();
 
-            GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-            GUILayout.Label("HEX UNDER UNIT", StaticEditor.labelStyle);
+
+            StaticEditor.Space(5);
+
+
+            //HEX DATA
+            StaticEditor.VerticalBox();
+            GUILayout.Label("HEXAGONE DATA", StaticEditor.labelTitleStyle);
             GUI.enabled = false;
-            EditorGUILayout.ObjectField(script.HexUnderUnit, typeof(GameObject), allowSceneObjects: true);
+
+            //ACTUAL HEX
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(new GUIContent("Actual Hex :", "Bonus of life with this style (Addition)"), StaticEditor.labelStyle);
+            EditorGUILayout.PropertyField(_actualHexProperty, GUIContent.none, GUILayout.Width(200));
+            GUILayout.EndHorizontal();
+
+            //NEXT HEX
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(new GUIContent("Next Hex :", "Bonus of life with this style (Addition)"), StaticEditor.labelStyle);
+            EditorGUILayout.PropertyField(_nextHexProperty, GUIContent.none, GUILayout.Width(200));
+            GUILayout.EndHorizontal();
+
             GUI.enabled = true;
             GUILayout.EndVertical();
         }
         GUILayout.EndVertical();
+        #endregion RuntimeData
     }
 }

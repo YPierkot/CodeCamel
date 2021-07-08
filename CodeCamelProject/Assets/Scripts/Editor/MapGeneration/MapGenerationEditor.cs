@@ -5,9 +5,11 @@ using UnityEditor;
 
 [CustomEditor(typeof(Map.MapGeneration))]
 public class MapGenerationEditor : Editor{
+    #region Variables
     SerializedProperty xSizeProperty;
     SerializedProperty ySizeProperty;
     SerializedProperty objectProperty;
+    #endregion Variables
 
     private void OnEnable(){
         xSizeProperty = serializedObject.FindProperty("_xSize");
@@ -18,10 +20,9 @@ public class MapGenerationEditor : Editor{
     public override void OnInspectorGUI(){
         Map.MapGeneration script = (Map.MapGeneration)target;
 
-        GUILayout.BeginVertical("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-        GUILayout.Label("MAP CREATION", StaticEditor.labelStyle);
-
-        StaticEditor.Space(10);
+        #region GridInfo
+        StaticEditor.VerticalBox();
+        GUILayout.Label("MAP CREATION", StaticEditor.labelTitleStyle);
 
         GUILayout.BeginHorizontal();
         GUILayout.Label("OBJECT TO SPAWN :", StaticEditor.labelStyle);
@@ -43,7 +44,7 @@ public class MapGenerationEditor : Editor{
         StaticEditor.Space(5);
         GUILayout.EndHorizontal();
 
-        GUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+        GUILayout.BeginHorizontal();
         if(GUILayout.Button("Create Terrain", StaticEditor.buttonStyle)){
             script.GenerateMap();
         }
@@ -52,5 +53,6 @@ public class MapGenerationEditor : Editor{
         }
         GUILayout.EndHorizontal();
         GUILayout.EndVertical();
+        #endregion GridInfo
     }
 }

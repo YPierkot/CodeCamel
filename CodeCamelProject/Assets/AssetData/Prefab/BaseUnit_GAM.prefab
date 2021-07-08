@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 190725985612094233}
   - component: {fileID: 1667919984}
   - component: {fileID: 1667919983}
-  - component: {fileID: 1667919982}
   - component: {fileID: -4625319025920701053}
   - component: {fileID: 1534898095}
+  - component: {fileID: 1667919982}
+  - component: {fileID: 1633488526}
   m_Layer: 13
   m_Name: BaseUnit_GAM
   m_TagString: Untagged
@@ -84,24 +85,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190725985612094234}
   m_Mesh: {fileID: 0}
---- !u!114 &1667919982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190725985612094234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08dd04266dda5e34bafabed246abe271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitScriptable: {fileID: 0}
-  _player: 0
-  _unitLife: 10
-  _manaGain: 0
-  _manaMax: 10
-  _hexUnderUnit: {fileID: 0}
 --- !u!95 &-4625319025920701053
 Animator:
   serializedVersion: 3
@@ -129,9 +112,45 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190725985612094234}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1667919982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190725985612094234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08dd04266dda5e34bafabed246abe271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitScriptable: {fileID: 0}
+  _player: 1
+  _unitLife: 10
+  _manaGain: 0
+  _hexUnderUnit: {fileID: 0}
+  _isMoving: 0
+  _nextHex: {fileID: 0}
+--- !u!114 &1633488526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190725985612094234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c7275ae7667f84883bca46fdd8f300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetUnit: {fileID: 0}
+  _targetUnitCylinder: {fileID: 0}
+  _basedCylinder: {fileID: 0}
+  _targetCylinder: {fileID: 0}
+  canMoveUnit: 0
