@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2625.6084, g: 2526.004, b: 3234.461, a: 1}
+  m_IndirectSpecularColor: {r: 2622.5654, g: 2523.6953, b: 3233.2969, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameHeight: 0.1371564
-  speed: 0.01
+  speed: 0.05
   listHexa:
   - {fileID: 966509414}
   - {fileID: 2003810975}
@@ -348,6 +348,7 @@ MonoBehaviour:
   - {fileID: 1708540930}
   - {fileID: 1566462558}
   startHexa: []
+  valeurImportante: 0.0001
 --- !u!1001 &26468670
 PrefabInstance:
   m_ObjectHideFlags: 0

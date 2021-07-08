@@ -8,6 +8,7 @@ public class HexaHeights : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private List<GameObject> listHexa;
     [SerializeField] private List<float> startHexa;
+    [SerializeField] private float valeurImportante;
 
 
     private bool allow; 
@@ -35,7 +36,7 @@ public class HexaHeights : MonoBehaviour
         }
 
 
-        if (allow && listHexa[0].transform.position.y != gameHeight)
+        if (allow && Vector3.Distance(listHexa[0].transform.position, new Vector3(listHexa[0].transform.position.x, gameHeight, listHexa[0].transform.position.z)) >= valeurImportante)
         {
             for (int i = 0; i < listHexa.Count; i++)
             {
@@ -50,7 +51,7 @@ public class HexaHeights : MonoBehaviour
                 }
             }
         }
-        else if (!allow && listHexa[0].transform.position.y != startHexa[0])
+        else if (!allow && Vector3.Distance(listHexa[0].transform.position, new Vector3(listHexa[0].transform.position.x, startHexa[0], listHexa[0].transform.position.z)) >= valeurImportante)
         {
             for (int i = 0; i < listHexa.Count; i++)
             {
