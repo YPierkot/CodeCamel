@@ -22,4 +22,7 @@ MonoBehaviour:
   _evasionRate: 0.2
   _attackRange: 2
   _moveSPeed: 3
-  _basicMesh: {fileID: 0}
+  _styleList:
+  - {fileID: 11400000, guid: f17a35cd06f2f964d96c3eafd2d2ba75, type: 2}
+  - {fileID: 11400000, guid: 67277512aaa722f43b8e5744810f3246, type: 2}
+  _basicMesh: {fileID: -7387706064836869012, guid: e31e19e691d26694d86f0db866317c9a, type: 3}

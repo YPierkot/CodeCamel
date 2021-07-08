@@ -8,10 +8,13 @@ namespace Map {
     public class MapGeneration : MonoBehaviour{
         #region Variables
         //MAP INFORMATION
+        [Tooltip("X Size of the grid")]
         [SerializeField] private int _xSize = 0;
+        [Tooltip("Y Size of the grid")]
         [SerializeField] private int _ySize = 0;
 
         //MAP HEX GAMEOBJECT
+        [Tooltip("mesh use to create the grid")]
         [SerializeField] private GameObject _meshToCreate = null;
 
         //PUBLIC VARIABLES

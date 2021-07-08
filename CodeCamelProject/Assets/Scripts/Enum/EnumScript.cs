@@ -21,4 +21,28 @@ public class EnumScript : MonoBehaviour{
         Forest,
         Beach
     }
+
+    /// <summary>
+    /// Family of the Unit
+    /// </summary>
+    public enum UnitsFamily
+    {
+        Family1,
+        Family2,
+        Family3,
+        Family4,
+        Family5
+    }
+
+    /// <summary>
+    /// Elements for the Unit
+    /// </summary>
+    public enum UnitsElement
+    {
+        None,
+        Fire,
+        Water,
+        Ground,
+        Wind
+    }
 }
