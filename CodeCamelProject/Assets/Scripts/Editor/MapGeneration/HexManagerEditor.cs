@@ -30,6 +30,18 @@ public class HexManagerEditor : Editor{
         if(EditorGUI.EndChangeCheck()){
             script.ReloadColor();
         }
+
+        GUI.enabled = false;
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Line :", StaticEditor.labelStyle, GUILayout.Width(100));
+        EditorGUILayout.IntField(script.Line);
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Id :", StaticEditor.labelStyle, GUILayout.Width(100));
+        EditorGUILayout.IntField(script.Id);
+        GUILayout.EndHorizontal();
+        GUI.enabled = true;
+
         GUILayout.EndVertical();
         #endregion PlayerHex
 

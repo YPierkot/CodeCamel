@@ -13,10 +13,6 @@ public class UnitManagerEditor : Editor{
     //UNIT DATA
     SerializedProperty _actualLifeProperty;
     SerializedProperty _actualManaProperty;
-    SerializedProperty _actualHexProperty;
-
-    SerializedProperty _isMovingProperty;
-    SerializedProperty _nextHexProperty;
     #endregion Variables
 
     /// <summary>
@@ -30,10 +26,7 @@ public class UnitManagerEditor : Editor{
         //UNIT DATA
         _actualLifeProperty = serializedObject.FindProperty("_unitLife");
         _actualManaProperty = serializedObject.FindProperty("_manaGain");
-        _actualHexProperty = serializedObject.FindProperty("_hexUnderUnit");
 
-        _isMovingProperty = serializedObject.FindProperty("_isMoving");
-        _nextHexProperty = serializedObject.FindProperty("_nextHex");
     }
 
     /// <summary>
@@ -129,29 +122,6 @@ public class UnitManagerEditor : Editor{
             }
             GUILayout.EndHorizontal();
             GUILayout.EndVertical();
-
-
-            StaticEditor.Space(5);
-
-
-            //HEX DATA
-            StaticEditor.VerticalBox();
-            GUILayout.Label("HEXAGONE DATA", StaticEditor.labelTitleStyle);
-            GUI.enabled = false;
-
-            //ACTUAL HEX
-            GUILayout.BeginHorizontal();
-            GUILayout.Label(new GUIContent("Actual Hex :", "Bonus of life with this style (Addition)"), StaticEditor.labelStyle);
-            EditorGUILayout.PropertyField(_actualHexProperty, GUIContent.none, GUILayout.Width(200));
-            GUILayout.EndHorizontal();
-
-            //NEXT HEX
-            GUILayout.BeginHorizontal();
-            GUILayout.Label(new GUIContent("Next Hex :", "Bonus of life with this style (Addition)"), StaticEditor.labelStyle);
-            EditorGUILayout.PropertyField(_nextHexProperty, GUIContent.none, GUILayout.Width(200));
-            GUILayout.EndHorizontal();
-
-            GUI.enabled = true;
             GUILayout.EndVertical();
         }
         GUILayout.EndVertical();

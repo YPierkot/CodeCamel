@@ -1,128 +1,101 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-namespace Unit
-{
+namespace Unit{
     public class Movement : MonoBehaviour{
         #region Variables
-        [Header("MOVEMENT DATA")]
-        [Tooltip("Unit target by this unit")]
+        [SerializeField] private LayerMask _layer;
+        [Header("HEX")]
+        [ReadOnly, SerializeField] private GameObject _hexUnderUnit;
+        [ReadOnly, SerializeField] private GameObject _targetHex;
+        [ReadOnly, SerializeField] private GameObject _nextHex;
+        GameObject _startHex;
+
+        [Header("UNIT")]
         [ReadOnly, SerializeField] private GameObject _targetUnit;
-        [Tooltip("Cylinder under the _targetUnit")]
-        [ReadOnly, SerializeField] private GameObject _targetUnitCylinder;
-        [Space]
-        [Tooltip("The cylinder where this unit start")]
-        [ReadOnly, SerializeField] private GameObject _basedCylinder = null;
-        [Tooltip("The cylinder direction for the unit")]
-        [ReadOnly, SerializeField] private GameObject _targetCylinder = null;
-        [Space]
-        [Tooltip("Can the unit move to the next target")]
-        [ReadOnly, SerializeField] bool canMoveUnit = false;
+
+        public GameObject HexUnderUnit { get => _hexUnderUnit; set => _hexUnderUnit = value; }
+        public GameObject TargetHex { get => _targetHex; set => _targetHex = value; }
+        public GameObject NextHex { get => _nextHex; set => _nextHex = value; }
+        public GameObject TargetUnit { get => _targetUnit; set => _targetUnit = value; }
+
+        public Vector3 pos;
+
         #endregion Variables
 
-        private void Update(){
-            if(Input.GetKeyDown(KeyCode.E)){
-                _basedCylinder = this.GetComponent<Unit.UnitManager>().HexUnderUnit;
-                GetClosestEnnemy();
+        public void Update(){
+            if(_nextHex != null){
+                MoveUnit();
+
             }
-
-            if(canMoveUnit){
-                MoveUnitWithPath();
-            }
-        }
-
-        #region MoveUnit
-        /// <summary>
-        /// Move the Unit to the closest hexagone
-        /// </summary>
-        void MoveUnitWithPath(){
-            //Get the direction of the movement
-            Vector3 dir = (new Vector3(_targetCylinder.transform.position.x, this.transform.position.y, _targetCylinder.transform.position.z) - _basedCylinder.transform.position).normalized;
-            this.transform.position += new Vector3(dir.x, 0f, dir.z) * Time.deltaTime * this.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._moveSpeed;
-
-            //If the unit is closer to the target hex than the original hex
-            if(StaticRuntime.aCloserThanb(_targetCylinder, _basedCylinder, this.gameObject)){
-                _basedCylinder.GetComponent<Map.HexManager>().RemoveUnit();
-                _targetCylinder.GetComponent<Map.HexManager>().AddUnitToTerrain(this.gameObject, this.GetComponent<Unit.UnitManager>().HexUnderUnit);
-                _targetCylinder.GetComponent<Map.HexManager>().RemoveNextUnit();
-            }
-
-            //If the unit is close to the target position (value < 0.025f)
-            if(CheckDistanceBetweenUnit()){
-                _targetCylinder.GetComponent<Map.HexManager>().AddUnitToTerrain(this.gameObject, _basedCylinder);
-
-                if(Vector3.Distance(this.transform.position, _targetUnit.transform.position) >= this.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._attackRange * 2){
-                    _basedCylinder = this.GetComponent<Unit.UnitManager>().HexUnderUnit;
-                    GetClosestEnnemy();
-                }
-                else{
-                    canMoveUnit = false;
-                }
-            }
-        }
-        #endregion MoveUnit
-
-        #region CalculatePath
-        /// <summary>
-        /// Get the closest ennemy from the player
-        /// </summary>
-        void GetClosestEnnemy(){
-            float closestDistance = Mathf.Infinity;
-            GameObject closestGam = null;
-
-            foreach(GameObject unit in GetComponent<Unit.UnitManager>().Player == EnumScript.PlayerSide.RedPlayer ? GameManager.Instance.BluePlayerUnit : GameManager.Instance.RedPlayerUnit){
-                if(Mathf.Abs(Vector3.Distance(this.transform.position, unit.transform.position)) < closestDistance){
-                    closestGam = unit;
-                    closestDistance = Vector3.Distance(this.transform.position, unit.transform.position);
-                }
-            }
-
-            if(closestGam != null){
-                _targetUnit = closestGam;
-                CalculatePath();
+            else if(_targetHex != null){
+                getNextHex();
             }
         }
 
+        #region Movement
         /// <summary>
-        /// Calculate the path between the two units;
+        /// Get the nextHexagone to go
         /// </summary>
-        void CalculatePath(){
-            _targetUnitCylinder = _targetUnit.GetComponent<Unit.UnitManager>().HexUnderUnit;
-            Vector3 dir = (_targetUnitCylinder.transform.position - this.transform.position).normalized;
-
+        void getNextHex(){
+            Vector3 dir = _targetHex.transform.position - _hexUnderUnit.transform.position;
             RaycastHit hit;
-            if(Physics.Raycast(_basedCylinder.transform.position, dir, out hit, 12)){
-                _targetCylinder = hit.collider.gameObject;
+
+            if(Physics.Raycast(_hexUnderUnit.transform.position, dir, out hit, Mathf.Infinity, _layer)){
+                NextHex = hit.collider.gameObject;
             }
 
-            if(_targetCylinder.GetComponent<Map.HexManager>().TargetedUnit == null && _targetCylinder.GetComponent<Map.HexManager>().UnitOnHex == null){
-                canMoveUnit = true;
-                _targetCylinder.GetComponent<Map.HexManager>().AddNextUnitOnHex(this.gameObject);
-            }
-            else{
-                canMoveUnit = false;
-                _targetCylinder = null;
-                _basedCylinder = null;
-            }
+            _startHex = _hexUnderUnit;
+            _startHex.GetComponent<Map.HexManager>().TargetedUnit = null;
         }
-        #endregion CalculatePath
 
-        #region Check
-        /// <summary>
-        /// Check if the distance bewteen two units is less than 0.025f
-        /// </summary>
-        /// <returns></returns>
-        bool CheckDistanceBetweenUnit(){
-            if(Mathf.Abs(Vector3.Distance(
-                this.transform.position,
-                new Vector3(_targetCylinder.transform.position.x, this.transform.position.y, _targetCylinder.transform.position.z))) <= 0.025f){
-                return true;
+        void MoveUnit(){
+            Vector3 dir = (_nextHex.transform.position - _startHex.transform.position).normalized;
+            transform.position += new Vector3(dir.x, 0, dir.z) * Time.deltaTime * GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._moveSpeed;
+
+            if(Mathf.Abs(Vector3.Distance(new Vector3(_nextHex.transform.position.x, transform.position.y, _nextHex.transform.position.z), this.transform.position)) <=
+               Mathf.Abs(Vector3.Distance(new Vector3(_hexUnderUnit.transform.position.x, transform.position.y, _hexUnderUnit.transform.position.z), this.transform.position))){
+                _nextHex.GetComponent<Map.HexManager>().AddUnitToTerrain(this.gameObject, _hexUnderUnit);
+                _hexUnderUnit = _nextHex;
+            }
+
+            if(Mathf.Abs(Mathf.Abs(Vector3.Distance(new Vector3(_targetHex.transform.position.x, transform.position.y, _nextHex.transform.position.z), this.transform.position))) <= 0.1f){
+                _targetHex.GetComponent<Map.HexManager>().ReloadColor();
+                _targetHex = null;
+                _nextHex = null;
             }
             else{
-                return false;
+                if(Mathf.Abs(Mathf.Abs(Vector3.Distance(new Vector3(_nextHex.transform.position.x, transform.position.y, _nextHex.transform.position.z), this.transform.position))) <= 0.1f){
+                    _targetHex.GetComponent<Map.HexManager>().ReloadColor();
+                    _targetHex.GetComponent<Map.HexManager>().TargetedUnit = null;
+                    Unit.MovementAIManager.Instance.GetRedPlayerTarget(this.gameObject);
+                }
+            }
+
+
+        }
+        #endregion Movement
+        public int z = 0;
+        public IEnumerator checkPos(){
+            yield return new WaitForSeconds(.25f);
+            if(pos != transform.position){
+                pos = transform.position;
+                z++;
+
+                if(z >= 2){
+                    Unit.MovementAIManager.Instance.ResetWorld();
+                    Unit.MovementAIManager.Instance.GetRedPlayerTarget();
+                }
+                StartCoroutine(checkPos());
+            }
+            else{
+                Debug.LogError(gameObject.name + " / " + transform.position + " / " + pos);
+                foreach(GameObject gamL in GameManager.Instance.RedPlayerUnit){
+                    gamL.GetComponent<Unit.Movement>().StopAllCoroutines();
+                }
             }
         }
-        #endregion Check
     }
 }

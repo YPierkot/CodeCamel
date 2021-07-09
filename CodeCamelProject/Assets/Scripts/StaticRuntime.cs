@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unit;
 using UnityEngine;
 
 public static class StaticRuntime
@@ -20,12 +21,224 @@ public static class StaticRuntime
         }
     }
 
+    #region Neighboor
     /// <summary>
     /// Get all the neighboor from a hex
     /// </summary>
     /// <param name="baseCylinder"></param>
     /// <returns></returns>
     public static List<GameObject> getNeighboorList(GameObject baseCylinder){
-        return new List<GameObject>();
+        int id = baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id;
+
+        List<int> neighboorIdList = GetneighboorFromId(id, baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Line);
+
+        List<GameObject> neighboorListGam = new List<GameObject>();
+        for(int i = 0; i < neighboorIdList.Count; i++){
+            neighboorListGam.Add(GameManager.Instance.WolrdGam.transform.GetChild(neighboorIdList[i]).gameObject);
+        }
+
+        return neighboorListGam;
+    }
+
+    /// <summary>
+    /// Get all the neighboor from a hex
+    /// </summary>
+    /// <param name="baseCylinder"></param>
+    /// <returns></returns>
+    public static List<GameObject> getNeighboorListAtRange(GameObject baseCylinder, int range){
+        int id = baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id;
+
+        List<int> finalList = new List<int>();
+        List<int> actualList = new List<int>();
+        List<int> lastListGet = new List<int>();
+        List<int> rememberLastList = new List<int>();
+
+        rememberLastList.Add(id);
+
+        for(int i = 0; i < range; i++){
+            rememberLastList.AddRange(lastListGet);
+            lastListGet.Clear();
+            foreach(int idH in rememberLastList){
+                actualList.Clear();
+                actualList = GetneighboorFromId(idH, GameManager.Instance.WolrdGam.transform.GetChild(idH).GetComponent<Map.HexManager>().Line);
+                foreach(int idL in actualList){
+                    if(!finalList.Contains(idL))
+                        finalList.Add(idL);
+                }
+                lastListGet.AddRange(actualList);
+            }
+            rememberLastList.Clear();
+        }
+
+        List<GameObject> neighboorListGam = new List<GameObject>();
+        for(int i = 0; i < finalList.Count; i++){
+            neighboorListGam.Add(GameManager.Instance.WolrdGam.transform.GetChild(finalList[i]).gameObject);
+        }
+
+        return neighboorListGam;
+    }
+
+    /// <summary>
+    /// Get all the nieghboorID in a list
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    static List<int> GetneighboorFromId(int id, int line){
+        List<int> neighboorIdList = new List<int>();
+
+        int ySize = GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().YSize;
+        int xSize = GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().XSize;
+
+        if(line % 2 == 0){
+            if(id % ySize == 0){
+                if(id == 0){
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id + 9); //HAUT GAUCHE
+                }
+                else if(id == (xSize * ySize) - xSize){
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id - 9); //BAS GAUCHE
+                }
+                else{
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id + 9); //HAUT GAUCHE
+                    neighboorIdList.Add(id - 9); //BAS GAUCHE
+                }
+            }
+            else if(id % ySize == ySize - 1){
+                if(id == xSize - 1){
+                    neighboorIdList.Add(id + 9); //HAUT GAUCHE
+                    neighboorIdList.Add(id + 8); //HAUT DROITE
+                    neighboorIdList.Add(id - 1); //DROITE
+                }
+                if(id == (xSize * ySize) - 1){
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 10); //BAS DROITE
+                    neighboorIdList.Add(id - 9); //BAS GAUCHE
+                }
+                else{
+                    neighboorIdList.Add(id + 9); //HAUT GAUCHE
+                    neighboorIdList.Add(id + 8); //HAUT DROITE
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 10); //BAS DROITE
+                    neighboorIdList.Add(id - 9); //BAS GAUCHE
+                }
+            }
+            else{
+                if(line == 0){
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id + 9); //HAUT GAUCHE
+                    neighboorIdList.Add(id + 8); //HAUT DROITE
+                    neighboorIdList.Add(id - 1); //DROITE
+                }
+                else if(line == ySize - 1){
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 10); //BAS DROITE
+                    neighboorIdList.Add(id - 9); //BAS GAUCHE
+                }
+                else{
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id + 9); //HAUT GAUCHE
+                    neighboorIdList.Add(id + 8); //HAUT DROITE
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 10); //BAS DROITE
+                    neighboorIdList.Add(id - 9); //BAS GAUCHE
+                }
+            }
+        }
+        else{
+            if(id % ySize == 0){
+                if(id == (xSize * ySize) - xSize){
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id - 9); //BAS DROITE
+                    neighboorIdList.Add(id - 8); //BAS GAUCHE
+                }
+                else{
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id + 10); //HAUT GAUCHE
+                    neighboorIdList.Add(id + 9); //HAUT DROITE
+                    neighboorIdList.Add(id - 9); //BAS DROITE
+                    neighboorIdList.Add(id - 8); //BAS GAUCHE
+                }
+            }
+            else if(id % ySize == ySize - 1){
+                if(id == (xSize * ySize) - 1){
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 9); //BAS DROITE
+                }
+                else{
+                    neighboorIdList.Add(id + 9); //HAUT DROITE
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 9); //BAS DROITE
+                }
+            }
+            else{
+                if(line == 0){
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id + 10); //HAUT GAUCHE
+                    neighboorIdList.Add(id + 9); //HAUT DROITE
+                    neighboorIdList.Add(id - 1); //DROITE
+                }
+                else if(line == ySize - 1){
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 9); //BAS DROITE
+                    neighboorIdList.Add(id - 8); //BAS GAUCHE
+                }
+                else{
+                    neighboorIdList.Add(id + 1); //GAUCHE
+                    neighboorIdList.Add(id + 10); //HAUT GAUCHE
+                    neighboorIdList.Add(id + 9); //HAUT DROITE
+                    neighboorIdList.Add(id - 1); //DROITE
+                    neighboorIdList.Add(id - 9); //BAS DROITE
+                    neighboorIdList.Add(id - 8); //BAS GAUCHE
+                }
+            }
+        }
+
+
+        return neighboorIdList;
+    }
+    #endregion Neighboor
+
+    /// <summary>
+    /// Get the closest GameObject from an Object
+    /// </summary>
+    /// <param name="gamToCheck"></param>
+    /// <param name="baseGam"></param>
+    /// <returns></returns>
+    public static ClosestGam getClosestGameObject(List<GameObject> gamToCheck, GameObject baseGam){
+        ClosestGam closeGam = new ClosestGam();
+        closeGam.closestDistance = Mathf.Infinity;
+
+        foreach(GameObject gam in gamToCheck){
+            if(Vector3.Distance(baseGam.transform.position, gam.transform.position) <= closeGam.closestDistance){
+                closeGam.closestDistance = Vector3.Distance(baseGam.transform.position, gam.transform.position);
+                closeGam.closestGameObject = gam;
+            }
+        }
+
+        return closeGam;
+    }
+
+    /// <summary>
+    /// Get the closest Hexagone from a Unit
+    /// </summary>
+    /// <param name="gamToCheck"></param>
+    /// <param name="baseGam"></param>
+    /// <returns></returns>
+    public static ClosestGam getClosestFreeHex(List<GameObject> gamToCheck, GameObject baseGam){
+        ClosestGam closeGam = new ClosestGam();
+        closeGam.closestDistance = Mathf.Infinity;
+
+        foreach(GameObject gam in gamToCheck){
+            if(Mathf.Abs(Vector3.Distance(baseGam.transform.position, gam.transform.position)) <= closeGam.closestDistance && gam.GetComponent<Map.HexManager>().TargetedUnit == null){
+                closeGam.closestDistance = Vector3.Distance(baseGam.transform.position, gam.transform.position);
+                closeGam.closestGameObject = gam;
+            }
+        }
+
+        return closeGam;
     }
 }

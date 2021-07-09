@@ -16,6 +16,12 @@ namespace Map
         [Tooltip("Which player can put his Unit on")]
         [SerializeField] private PlayerSide _playerCanPose = PlayerSide.BluePlayer;
 
+
+        [Tooltip("On which line is this hex")]
+        [SerializeField] private int _line = 0;
+        [Tooltip("Id of the cylindder")]
+        [SerializeField] private int _id = 0;
+
         //UNIT ON HEX
         [Tooltip("The actual Unit on this Hex")]
         private GameObject _unitOnHex = null;
@@ -27,6 +33,8 @@ namespace Map
         public PlayerSide PlayerCanPose { get => _playerCanPose; }
         public GameObject UnitOnHex { get => _unitOnHex; }
         public GameObject TargetedUnit { get => _targetedUnit; set => _targetedUnit = value; }
+        public int Line { get => _line; set => _line = value; }
+        public int Id { get => _id; set => _id = value; }
         #endregion Variables
 
         #region terrainChanges
@@ -63,8 +71,9 @@ namespace Map
         public void AddUnitToTerrain(GameObject unit, GameObject lastHex){
             if(lastHex != this.gameObject){
                 _unitOnHex = unit;
+                _targetedUnit = unit;
                 if(lastHex != null) lastHex.GetComponent<HexManager>().RemoveUnit();
-                unit.GetComponent<Unit.UnitManager>().ChangeHexUnderUnit(this.gameObject);
+                unit.GetComponent<Unit.Movement>().HexUnderUnit = this.gameObject;
             }
         }
 
@@ -73,20 +82,6 @@ namespace Map
         /// </summary>
         public void RemoveUnit(){
             _unitOnHex = null;
-        }
-
-        /// <summary>
-        /// Add a unit who will come to this hex next
-        /// </summary>
-        public void AddNextUnitOnHex(GameObject unit){
-            _targetedUnit = unit;
-        }
-
-        /// <summary>
-        /// Remove the unit who need to come on this hex
-        /// </summary>
-        public void RemoveNextUnit(){
-            _targetedUnit = null;
         }
         #endregion UnitOnTerrain
 
