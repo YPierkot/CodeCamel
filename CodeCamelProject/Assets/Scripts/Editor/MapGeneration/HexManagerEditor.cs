@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using static UnityEditor.Progress;
 
-[CustomEditor(typeof(Map.HexManager)), CanEditMultipleObjects]
+[CustomEditor(typeof(Map.HexManager))]
 public class HexManagerEditor : Editor{
     #region Variables
     SerializedProperty _playerProperty;

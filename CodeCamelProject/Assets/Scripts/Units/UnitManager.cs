@@ -39,6 +39,7 @@ namespace Unit{
 
                 this.gameObject.name = "BaseUnit : " + unitVar._unitName;
                 _unitLife = unitVar._life;
+                _manaGain = 10;
             }
             else{
                 GetComponent<MeshFilter>().sharedMesh = null;

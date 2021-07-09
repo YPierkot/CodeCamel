@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 190725985612094234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.085447, y: -1.3505623, z: -2.0955808}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 120, y: 120, z: 120}
   m_Children:
   - {fileID: 3444247525267594286}
   m_Father: {fileID: 0}
@@ -154,10 +154,8 @@ MonoBehaviour:
   _targetHex: {fileID: 0}
   _nextHex: {fileID: 0}
   _targetUnit: {fileID: 0}
-  _targetUnitCylinder: {fileID: 0}
-  _basedCylinder: {fileID: 0}
-  _targetCylinder: {fileID: 0}
-  canMoveUnit: 0
+  pos: {x: 0, y: 0, z: 0}
+  z: 0
 --- !u!1 &4809851111226367100
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,5 +415,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  pos: {x: 0, y: 0, z: 0}
-  z: 0
