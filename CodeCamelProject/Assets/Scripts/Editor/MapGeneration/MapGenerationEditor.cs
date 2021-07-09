@@ -9,12 +9,14 @@ public class MapGenerationEditor : Editor{
     SerializedProperty xSizeProperty;
     SerializedProperty ySizeProperty;
     SerializedProperty objectProperty;
+    SerializedProperty listProperty;
     #endregion Variables
 
     private void OnEnable(){
         xSizeProperty = serializedObject.FindProperty("_xSize");
         ySizeProperty = serializedObject.FindProperty("_ySize");
         objectProperty = serializedObject.FindProperty("_meshToCreate");
+        listProperty = serializedObject.FindProperty("_gamList");
     }
 
     public override void OnInspectorGUI(){
@@ -52,7 +54,13 @@ public class MapGenerationEditor : Editor{
             script.DeleteMap();
         }
         GUILayout.EndHorizontal();
+        if(GUILayout.Button("Refresh Hex Height", StaticEditor.buttonStyle)){
+            script.GenerateHeight();
+        }
         GUILayout.EndVertical();
+
+        EditorGUILayout.PropertyField(listProperty);
+        serializedObject.ApplyModifiedProperties();
         #endregion GridInfo
     }
 }

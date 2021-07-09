@@ -77,14 +77,15 @@ namespace Unit{
 
         }
         #endregion Movement
-        public int z = 0;
+
+        [HideInInspector] public int z = 0;
         public IEnumerator checkPos(){
             yield return new WaitForSeconds(.25f);
             if(pos != transform.position){
                 pos = transform.position;
                 z++;
 
-                if(z >= 2){
+                if(z >= MovementAIManager.Instance.numberOfIteration){
                     Unit.MovementAIManager.Instance.ResetWorld();
                     Unit.MovementAIManager.Instance.GetRedPlayerTarget();
                 }

@@ -12,6 +12,7 @@ namespace Map {
         [SerializeField] private int _xSize = 0;
         [Tooltip("Y Size of the grid")]
         [SerializeField] private int _ySize = 0;
+        [SerializeField] private List<GameObject> _gamList = new List<GameObject>();
 
         //MAP HEX GAMEOBJECT
         [Tooltip("mesh use to create the grid")]
@@ -21,6 +22,7 @@ namespace Map {
         public int XSize { get => _xSize; set => _xSize = value; }
         public int YSize { get => _ySize; set => _ySize = value; }
         public GameObject MeshToCreate { get => _meshToCreate; set => _meshToCreate = value; }
+        public List<GameObject> GamList { get => _gamList; }
         #endregion Variables
 
 #if UNITY_EDITOR
@@ -30,6 +32,7 @@ namespace Map {
         public void GenerateMap(){
             DeleteMap();
             List<Vector3> posList = GenerateCylinderPos();
+            _gamList.Clear();
 
             foreach(Vector3 pos in posList){
                 Object cyl = PrefabUtility.InstantiatePrefab(_meshToCreate, this.transform);
@@ -39,6 +42,18 @@ namespace Map {
                 cylGam.GetComponent<Map.HexManager>().Id = posList.IndexOf(pos);
                 cylGam.GetComponent<Map.HexManager>().Line = (int) posList.IndexOf(pos) / YSize;
                 cyl.name = "cylinder " + posList.IndexOf(pos).ToString();
+                _gamList.Add(cylGam);
+            }
+        }
+
+        /// <summary>
+        /// Generate random Height for all the hex
+        /// </summary>
+        public void GenerateHeight(){
+            for(int i = 0; i < transform.childCount; i++){
+                transform.GetChild(i).transform.position = 
+                    new Vector3(transform.GetChild(i).transform.position.x , Random.Range(-.35f, .35f), transform.GetChild(i).transform.position.z);
+                transform.GetChild(i).GetComponent<Map.HexManager>().ReloadColor();
             }
         }
 
@@ -61,7 +76,7 @@ namespace Map {
 
             for(int x = 0; x < _xSize; x++){
                 for(int y = 0; y < _ySize; y++){
-                    cylinderPosList.Add(new Vector3(x * 1.5f , Random.Range(0, .35f), y * 1.73f + (x % 2 == 0 ? 0 : 0.865f)));
+                    cylinderPosList.Add(new Vector3(x * 1.5f , Random.Range(-.35f, .35f), y * 1.73f + (x % 2 == 0 ? 0 : 0.865f)));
                 }
             }
             return cylinderPosList;

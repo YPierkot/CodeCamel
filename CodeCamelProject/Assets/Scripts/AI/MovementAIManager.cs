@@ -5,6 +5,10 @@ using UnityEditor;
 
 namespace Unit{
     public class MovementAIManager : MonoSingleton<MovementAIManager>{
+        #region Variables
+        [SerializeField] private bool _autoAiMovement = false;
+        public int numberOfIteration = 0;
+        #endregion Variables
 
         private void Update(){
             if(Input.GetKeyDown(KeyCode.E)){
@@ -12,17 +16,17 @@ namespace Unit{
                 //GetBluePlayerTarget();
             }
 
-            if(Input.GetKey(KeyCode.A)){
+            if(Input.GetKeyDown(KeyCode.A)){
                 ResetWorld();
             }
         }
 
         #region Random
         public void ResetWorld(){
-            for(int i = 0; i < GameManager.Instance.WolrdGam.transform.childCount; i++){
-                GameManager.Instance.WolrdGam.transform.GetChild(i).GetComponent<Map.HexManager>().RemoveUnit();
-                GameManager.Instance.WolrdGam.transform.GetChild(i).GetComponent<Map.HexManager>().TargetedUnit = null;
-                GameManager.Instance.WolrdGam.transform.GetChild(i).GetComponent<Map.HexManager>().ReloadColor();
+            for(int i = 0; i < GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().GamList.Count; i++){
+                GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().GamList[i].GetComponent<Map.HexManager>().RemoveUnit();
+                GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().GamList[i].GetComponent<Map.HexManager>().TargetedUnit = null;
+                GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().GamList[i].GetComponent<Map.HexManager>().ReloadColor();
             }
 
             for(int i = 0; i < GameManager.Instance.RedPlayerUnit.Count; i++){
@@ -31,7 +35,7 @@ namespace Unit{
                 GameManager.Instance.RedPlayerUnit[i].GetComponent<Unit.Movement>().TargetUnit = null;
                 GameManager.Instance.RedPlayerUnit[i].GetComponent<Unit.Movement>().NextHex = null;
 
-                int randomValue = Random.Range(0, GameManager.Instance.WolrdGam.transform.childCount);
+                int randomValue = Random.Range(0, GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().GamList.Count);
                 while(GameManager.Instance.WolrdGam.transform.GetChild(randomValue).GetComponent<Map.HexManager>().PlayerCanPose != EnumScript.PlayerSide.RedPlayer ||
                     GameManager.Instance.WolrdGam.transform.GetChild(randomValue).GetComponent<Map.HexManager>().UnitOnHex != null){
                     randomValue = Random.Range(0, GameManager.Instance.WolrdGam.transform.childCount);
@@ -73,6 +77,7 @@ namespace Unit{
         /// </summary>
         public void GetRedPlayerTarget(GameObject gam = null){
             List<GameObject> redPlayerList = ArrangeGamList(GameManager.Instance.RedPlayerUnit);
+
             foreach(GameObject gamL in GameManager.Instance.RedPlayerUnit){
                 gamL.GetComponent<Unit.Movement>().StopAllCoroutines();
                 gamL.GetComponent<Unit.Movement>().z = 0;
@@ -81,6 +86,10 @@ namespace Unit{
             StartCoroutine(SetTargetToUnit(gam != null ? new List<GameObject>() { gam } : redPlayerList, GameManager.Instance.BluePlayerUnit));
         }
 
+        /// <summary>
+        /// get all the target for the blue player
+        /// </summary>
+        /// <param name="gam"></param>
         public void GetBluePlayerTarget(GameObject gam = null){
             List<GameObject> bluePlayerList = ArrangeGamList(GameManager.Instance.BluePlayerUnit);
             foreach(GameObject gamL in GameManager.Instance.RedPlayerUnit){
@@ -91,6 +100,12 @@ namespace Unit{
             StartCoroutine(SetTargetToUnit(gam != null ? new List<GameObject>() { gam } : bluePlayerList, GameManager.Instance.RedPlayerUnit));
         }
 
+        /// <summary>
+        /// Set all the target to the Unit
+        /// </summary>
+        /// <param name="gamList"></param>
+        /// <param name="ennemyList"></param>
+        /// <returns></returns>
         IEnumerator SetTargetToUnit(List<GameObject> gamList, List<GameObject> ennemyList){
             foreach(GameObject gam in gamList){
                 //get the closest Unit
@@ -110,11 +125,10 @@ namespace Unit{
                     gam.GetComponent<Unit.Movement>().TargetUnit = closestUnit.closestGameObject;
                     gam.GetComponent<Unit.Movement>().TargetHex = closestHex.closestGameObject;
                     gam.GetComponent<Unit.Movement>().NextHex = null;
-                    Debug.Log(closestUnit.closestGameObject + " / " + closestHex.closestGameObject + " / " + gam);
                     closestHex.closestGameObject.GetComponent<Map.HexManager>().TargetedUnit = gam;
                     closestHex.closestGameObject.GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/GoldHex.mat", typeof(Material));
 
-                    //gam.GetComponent<Unit.Movement>().StartCoroutine(gam.GetComponent<Unit.Movement>().checkPos());
+                    if(_autoAiMovement) gam.GetComponent<Unit.Movement>().StartCoroutine(gam.GetComponent<Unit.Movement>().checkPos());
                 }
                 else{
                     Debug.LogError("There is no place for this Unit");

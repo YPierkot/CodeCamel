@@ -89,8 +89,9 @@ public class UnitManagerEditor : Editor{
             StaticEditor.VerticalBox();
             GUILayout.Label("UNIT STAT", StaticEditor.labelTitleStyle);
 
+            GUILayout.BeginHorizontal(); 
+
             //LIFE PROGRESS BAR
-            GUILayout.BeginHorizontal();
             GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Life.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
             StaticEditor.ProgressBar(_actualLifeProperty.floatValue / unitVar._life, $"Life : {_actualLifeProperty.floatValue} / {unitVar._life}");
 
@@ -108,8 +109,10 @@ public class UnitManagerEditor : Editor{
 
             //MANA
             GUILayout.BeginHorizontal();
+
             GUILayout.Label(AssetDatabase.LoadAssetAtPath("Assets/AssetData/Icon/Mana.png", typeof(Texture2D)) as Texture2D, GUILayout.Width(iconSize), GUILayout.Height(iconSize));
             StaticEditor.ProgressBar(_actualManaProperty.floatValue / 10, $"Mana : {_actualManaProperty.floatValue} / {10}");
+
             //REDUCE MANA
             if(GUILayout.Button("-", GUILayout.Width(20))){
                 if(_actualManaProperty.floatValue - 1 >= 0) script.AddMana(-1);
@@ -121,7 +124,6 @@ public class UnitManagerEditor : Editor{
                 else Debug.LogError($"Can't give more mana to the unit. The Unit is already at maxMana : {10}");
             }
             GUILayout.EndHorizontal();
-            GUILayout.EndVertical();
             GUILayout.EndVertical();
         }
         GUILayout.EndVertical();
