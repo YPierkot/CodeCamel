@@ -21,7 +21,7 @@ MonoBehaviour:
   _critValueMultiplier: 1.5
   _evasionRate: 0.2
   _attackRange: 2
-  _moveSPeed: 3
+  _moveSPeed: 4
   _styleList:
   - {fileID: 11400000, guid: f17a35cd06f2f964d96c3eafd2d2ba75, type: 2}
   - {fileID: 11400000, guid: 67277512aaa722f43b8e5744810f3246, type: 2}

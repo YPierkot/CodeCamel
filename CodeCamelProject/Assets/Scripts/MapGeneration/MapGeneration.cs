@@ -36,6 +36,8 @@ namespace Map {
                 GameObject cylGam = cyl as GameObject;
                 cylGam.transform.position = pos;
                 cylGam.transform.rotation = Quaternion.Euler(-90, 0, 90);
+                cylGam.GetComponent<Map.HexManager>().Id = posList.IndexOf(pos);
+                cylGam.GetComponent<Map.HexManager>().Line = (int) posList.IndexOf(pos) / YSize;
                 cyl.name = "cylinder " + posList.IndexOf(pos).ToString();
             }
         }

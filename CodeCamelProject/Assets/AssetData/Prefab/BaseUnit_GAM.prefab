@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4625319025920701053}
   - component: {fileID: 1534898095}
   - component: {fileID: 1667919982}
-  - component: {fileID: 1633488526}
+  - component: {fileID: -838688515160021820}
   m_Layer: 13
   m_Name: BaseUnit_GAM
   m_TagString: Untagged
@@ -132,13 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitScriptable: {fileID: 0}
-  _player: 1
+  _player: 0
   _unitLife: 10
   _manaGain: 0
-  _hexUnderUnit: {fileID: 0}
-  _isMoving: 0
-  _nextHex: {fileID: 0}
---- !u!114 &1633488526
+--- !u!114 &-838688515160021820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,6 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c7275ae7667f84883bca46fdd8f300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4096
+  _hexUnderUnit: {fileID: 0}
+  _targetHex: {fileID: 0}
+  _nextHex: {fileID: 0}
   _targetUnit: {fileID: 0}
   _targetUnitCylinder: {fileID: 0}
   _basedCylinder: {fileID: 0}
@@ -414,3 +417,5 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  pos: {x: 0, y: 0, z: 0}
+  z: 0

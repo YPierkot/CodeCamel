@@ -17,19 +17,10 @@ namespace Unit{
         [SerializeField] private float _unitLife = 0f;
         [Tooltip("Actual Mana of this Unit")]
         [SerializeField] private float _manaGain = 0f;
-        [Tooltip("The Hexagone which is under this Unit")]
-        [SerializeField] private GameObject _hexUnderUnit = null;
-        [Space(5)]
-        [Tooltip("If the Unit move")]
-        [SerializeField] private bool _isMoving = false;
-        [Tooltip("The Hexagone on which the Unit is going to go")]
-        [SerializeField] private GameObject _nextHex = null;
 
         //PUBLIC VARIABLES
-        public GameObject HexUnderUnit => _hexUnderUnit;
         public EnumScript.PlayerSide Player => _player;
         public bool runTimeData { get; set; }
-        public GameObject NextHex { get => _nextHex; set => _nextHex = value; }
         #endregion Variables
 
         #region Data
@@ -73,12 +64,6 @@ namespace Unit{
             _manaGain += mana;
         }
         #endregion UnitMethods
-
-        #region HexTile
-        public void ChangeHexUnderUnit(GameObject hex = null){
-            _hexUnderUnit = hex;
-        }
-        #endregion HexTile
 
 #if UNITY_EDITOR
         /// <summary>

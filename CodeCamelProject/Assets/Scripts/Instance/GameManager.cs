@@ -41,6 +41,10 @@ public class GameManager : MonoSingleton<GameManager>{
 
     public List<GameObject> RedPlayerUnit { get => _redPlayerUnit; set => _redPlayerUnit = value; }
     public List<GameObject> BluePlayerUnit { get => _bluePlayerUnit; set => _bluePlayerUnit = value; }
+
+    [Header("Hex Info")]
+    [SerializeField] private GameObject _wolrdGam = null;
+    public GameObject WolrdGam { get => _wolrdGam; set => _wolrdGam = value; }
     #endregion Variables
 
     private void Start(){
@@ -118,7 +122,7 @@ public class GameManager : MonoSingleton<GameManager>{
             _isDraggingUnit = true;
             _hasReachTarget = false;
             cylinderChange += MoveUnitWhenDragging;
-            if(_unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit != null) _startHex = _unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit;
+            if(_unitDragging.GetComponent<Unit.Movement>().HexUnderUnit != null) _startHex = _unitDragging.GetComponent<Unit.Movement>().HexUnderUnit;
         }
     }
 
@@ -152,7 +156,7 @@ public class GameManager : MonoSingleton<GameManager>{
 
         }
         else{
-            _lastHexUnderMouse = _unitDragging.GetComponent<Unit.UnitManager>().HexUnderUnit;
+            _lastHexUnderMouse = _unitDragging.GetComponent<Unit.Movement>().HexUnderUnit;
         }
 
         if(_lastHexUnderMouse != null){
