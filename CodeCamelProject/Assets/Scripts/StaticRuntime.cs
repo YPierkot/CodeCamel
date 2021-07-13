@@ -1,6 +1,8 @@
-using System.Collections;
+using System;
+using System.Reflection;
 using System.Collections.Generic;
 using Unit;
+using UnityEditor;
 using UnityEngine;
 
 public static class StaticRuntime
@@ -27,10 +29,10 @@ public static class StaticRuntime
     /// </summary>
     /// <param name="baseCylinder"></param>
     /// <returns></returns>
-    public static List<GameObject> getNeighboorList(GameObject baseCylinder){
-        int id = baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id;
+    public static List<GameObject> getNeighboorList(GameObject baseCylinder = null, GameObject baseUnit = null){
+        int id = baseCylinder == null? baseUnit.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id : baseCylinder.GetComponent<Map.HexManager>().Id;
 
-        List<int> neighboorIdList = GetneighboorFromId(id, baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Line);
+        List<int> neighboorIdList = GetneighboorFromId(id, baseCylinder == null ? baseUnit.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Line : baseCylinder.GetComponent<Map.HexManager>().Line);
 
         List<GameObject> neighboorListGam = new List<GameObject>();
         for(int i = 0; i < neighboorIdList.Count; i++){
@@ -46,7 +48,9 @@ public static class StaticRuntime
     /// <param name="baseCylinder"></param>
     /// <returns></returns>
     public static List<GameObject> getNeighboorListAtRange(GameObject baseCylinder, int range){
-        int id = baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id;
+        int id = 0;
+        if(baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit != null) id = baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id;
+        else return null;
 
         List<int> finalList = new List<int>();
         List<int> actualList = new List<int>();
@@ -60,6 +64,7 @@ public static class StaticRuntime
             lastListGet.Clear();
             foreach(int idH in rememberLastList){
                 actualList.Clear();
+                Debug.Log(idH);
                 actualList = GetneighboorFromId(idH, GameManager.Instance.WolrdGam.transform.GetChild(idH).GetComponent<Map.HexManager>().Line);
                 foreach(int idL in actualList){
                     if(!finalList.Contains(idL))
@@ -71,8 +76,10 @@ public static class StaticRuntime
         }
 
         List<GameObject> neighboorListGam = new List<GameObject>();
-        for(int i = 0; i < finalList.Count; i++){
-            neighboorListGam.Add(GameManager.Instance.WolrdGam.transform.GetChild(finalList[i]).gameObject);
+        for(int i = 0; i < finalList.Count; i++) {
+            if(finalList[i] < (GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().XSize * GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().YSize) - 1 && finalList[i] >= 0){
+                neighboorListGam.Add(GameManager.Instance.WolrdGam.transform.GetChild(finalList[i]).gameObject);
+            }
         }
 
         return neighboorListGam;
@@ -200,7 +207,6 @@ public static class StaticRuntime
 
         return neighboorIdList;
     }
-    #endregion Neighboor
 
     /// <summary>
     /// Get the closest GameObject from an Object
@@ -231,8 +237,9 @@ public static class StaticRuntime
     public static ClosestGam getClosestFreeHex(List<GameObject> gamToCheck, GameObject baseGam){
         ClosestGam closeGam = new ClosestGam();
         closeGam.closestDistance = Mathf.Infinity;
-
+        //Debug.Log(" ");
         foreach(GameObject gam in gamToCheck){
+            //Debug.Log(baseGam.name + " : " + gam.name + " / " + Mathf.Abs(Vector3.Distance(baseGam.transform.position, gam.transform.position)) + " / " + gam.GetComponent<Map.HexManager>().TargetedUnit);
             if(Mathf.Abs(Vector3.Distance(baseGam.transform.position, gam.transform.position)) <= closeGam.closestDistance && gam.GetComponent<Map.HexManager>().TargetedUnit == null){
                 closeGam.closestDistance = Vector3.Distance(baseGam.transform.position, gam.transform.position);
                 closeGam.closestGameObject = gam;
@@ -241,4 +248,5 @@ public static class StaticRuntime
 
         return closeGam;
     }
+    #endregion Neighboor
 }

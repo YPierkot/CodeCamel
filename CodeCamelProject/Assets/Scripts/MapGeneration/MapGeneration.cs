@@ -52,8 +52,8 @@ namespace Map {
         public void GenerateHeight(){
             for(int i = 0; i < transform.childCount; i++){
                 transform.GetChild(i).transform.position = 
-                    new Vector3(transform.GetChild(i).transform.position.x , Random.Range(-.35f, .35f), transform.GetChild(i).transform.position.z);
-                transform.GetChild(i).GetComponent<Map.HexManager>().ReloadColor();
+                    new Vector3(transform.GetChild(i).transform.position.x , Random.Range(-.2f, .2f), transform.GetChild(i).transform.position.z);
+                transform.GetChild(i).GetComponent<Map.HexManager>().ChangeColor();
             }
         }
 
@@ -76,7 +76,7 @@ namespace Map {
 
             for(int x = 0; x < _xSize; x++){
                 for(int y = 0; y < _ySize; y++){
-                    cylinderPosList.Add(new Vector3(x * 1.5f , Random.Range(-.35f, .35f), y * 1.73f + (x % 2 == 0 ? 0 : 0.865f)));
+                    cylinderPosList.Add(new Vector3(x * 1.5f , Random.Range(-.2f, .2f), y * 1.73f + (x % 2 == 0 ? 0 : 0.865f)));
                 }
             }
             return cylinderPosList;

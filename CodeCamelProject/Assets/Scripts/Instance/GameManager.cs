@@ -133,7 +133,7 @@ public class GameManager : MonoSingleton<GameManager>{
         if(_isDraggingUnit){
             _isDraggingUnit = false;
             cylinderChange -= MoveUnitWhenDragging;
-            if(_lastHexUnderMouse != null) _lastHexUnderMouse.GetComponent<Map.HexManager>().AddUnitToTerrain(_unitDragging, _startHex);
+            if(_lastHexUnderMouse != null) _lastHexUnderMouse.GetComponent<Map.HexManager>().AddUnitToTerrain(_unitDragging);
             _startHex = null;
 
             //If goal is reach

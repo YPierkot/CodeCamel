@@ -154,8 +154,6 @@ MonoBehaviour:
   _targetHex: {fileID: 0}
   _nextHex: {fileID: 0}
   _targetUnit: {fileID: 0}
-  pos: {x: 0, y: 0, z: 0}
-  z: 0
 --- !u!1 &4809851111226367100
 GameObject:
   m_ObjectHideFlags: 0
