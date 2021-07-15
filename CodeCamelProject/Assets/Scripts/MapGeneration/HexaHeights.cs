@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class HexaHeights : MonoBehaviour{
     [SerializeField] private float gameHeight;
-    [SerializeField] private float speed;
+    [SerializeField] private float _moveSpeed;
     [SerializeField] private List<GameObject> listHexa;
-    [SerializeField] private List<float> startHexa;
-    [SerializeField] private float valeurImportante;
-
+    private List<float> startHexa = new List<float>();
+    [SerializeField] private float _threshold;
 
     private bool allow; 
 
-    private void Awake()
-    {
+    private void Awake(){
         allow = false;
         if(listHexa.Count != 0){
             for(int i = 0; i < listHexa.Count; i++){
@@ -29,10 +27,10 @@ public class HexaHeights : MonoBehaviour{
             }
 
 
-            if(allow && Vector3.Distance(listHexa[0].transform.position, new Vector3(listHexa[0].transform.position.x, gameHeight, listHexa[0].transform.position.z)) >= valeurImportante){
+            if(allow && Vector3.Distance(listHexa[0].transform.position, new Vector3(listHexa[0].transform.position.x, gameHeight, listHexa[0].transform.position.z)) >= _threshold){
                 for(int i = 0; i < listHexa.Count; i++){
                     Vector3 vector3 = new Vector3(listHexa[i].transform.position.x, gameHeight, listHexa[i].transform.position.z);
-                    listHexa[i].transform.position = Vector3.Lerp(listHexa[i].transform.position, vector3, speed * Time.deltaTime);
+                    listHexa[i].transform.position = Vector3.Lerp(listHexa[i].transform.position, vector3, _moveSpeed * Time.deltaTime);
 
                     if(listHexa[i].GetComponent<Map.HexManager>().UnitOnHex != null){
                         listHexa[i].GetComponent<Map.HexManager>().UnitOnHex.transform.position = new Vector3(
@@ -42,10 +40,10 @@ public class HexaHeights : MonoBehaviour{
                     }
                 }
             }
-            else if(!allow && Vector3.Distance(listHexa[0].transform.position, new Vector3(listHexa[0].transform.position.x, startHexa[0], listHexa[0].transform.position.z)) >= valeurImportante){
+            else if(!allow && Vector3.Distance(listHexa[0].transform.position, new Vector3(listHexa[0].transform.position.x, startHexa[0], listHexa[0].transform.position.z)) >= _threshold){
                 for(int i = 0; i < listHexa.Count; i++){
                     Vector3 vector3 = new Vector3(listHexa[i].transform.position.x, startHexa[i], listHexa[i].transform.position.z);
-                    listHexa[i].transform.position = Vector3.Lerp(listHexa[i].transform.position, vector3, speed * Time.deltaTime);
+                    listHexa[i].transform.position = Vector3.Lerp(listHexa[i].transform.position, vector3, _moveSpeed * Time.deltaTime);
 
                     if(listHexa[i].GetComponent<Map.HexManager>().UnitOnHex != null){
                         listHexa[i].GetComponent<Map.HexManager>().UnitOnHex.transform.position = new Vector3(listHexa[i].transform.position.x,

@@ -13,6 +13,11 @@ public class UnitManagerEditor : Editor{
     //UNIT DATA
     SerializedProperty _actualLifeProperty;
     SerializedProperty _actualManaProperty;
+    SerializedProperty _lifeGamProperty;
+    SerializedProperty _manaGamProperty;
+
+    bool openLifeGam = false;
+    bool openManaGam = false;
     #endregion Variables
 
     /// <summary>
@@ -26,7 +31,8 @@ public class UnitManagerEditor : Editor{
         //UNIT DATA
         _actualLifeProperty = serializedObject.FindProperty("_unitLife");
         _actualManaProperty = serializedObject.FindProperty("_manaGain");
-
+        _lifeGamProperty = serializedObject.FindProperty("_lifeGam");
+        _manaGamProperty = serializedObject.FindProperty("_manaGam");
     }
 
     /// <summary>
@@ -97,15 +103,24 @@ public class UnitManagerEditor : Editor{
 
             //DEAL DAMAGE
             if(GUILayout.Button("-", GUILayout.Width(20))){
-                if(_actualLifeProperty.floatValue - 1 >= 0) script.TakeDamage(1);
+                if(_actualLifeProperty.floatValue - 1 >= 0) script.TakeDamage(10);
                 else Debug.LogError("Can't deal more damage. The UnitLife is already at 0");
             }
             //GIVE LIFE
             if(GUILayout.Button("+", GUILayout.Width(20))){
-                if(_actualLifeProperty.floatValue + 1 <= unitVar._life) script.TakeDamage(-1);
+                if(_actualLifeProperty.floatValue + 1 <= unitVar._life) script.TakeDamage(-10);
                 else Debug.LogError($"Can't give more life to the unit. The Unit is already at maxLife : {unitVar._life}");
             }
+            //Update GameObject
+            if(GUILayout.Button(new GUIContent(EditorGUIUtility.IconContent("d_CollabEdit Icon", "Edit the scriptable of this Unit")), GUILayout.Width(30), GUILayout.Height(20))){
+                openLifeGam = !openLifeGam;
+            }
             GUILayout.EndHorizontal();
+
+            if(openLifeGam){
+                EditorGUILayout.PropertyField(_lifeGamProperty);
+                serializedObject.ApplyModifiedProperties();
+            }
 
             //MANA
             GUILayout.BeginHorizontal();
@@ -123,7 +138,16 @@ public class UnitManagerEditor : Editor{
                 if(_actualManaProperty.floatValue + 1 <= 10) script.AddMana(1);
                 else Debug.LogError($"Can't give more mana to the unit. The Unit is already at maxMana : {10}");
             }
+            if(GUILayout.Button(new GUIContent(EditorGUIUtility.IconContent("d_CollabEdit Icon", "Edit the scriptable of this Unit")), GUILayout.Width(30), GUILayout.Height(20))){
+                openManaGam = !openManaGam;
+            }
             GUILayout.EndHorizontal();
+
+            if(openManaGam){
+                EditorGUILayout.PropertyField(_manaGamProperty);
+                serializedObject.ApplyModifiedProperties();
+            }
+
             GUILayout.EndVertical();
         }
         GUILayout.EndVertical();

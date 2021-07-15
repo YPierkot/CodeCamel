@@ -9,11 +9,13 @@ public class HexManagerEditor : Editor{
     #region Variables
     SerializedProperty _playerProperty;
     SerializedProperty _effectProperty;
+    SerializedProperty _transitionListProperty;
     #endregion Variables
 
     private void OnEnable(){
         _playerProperty = serializedObject.FindProperty("_playerCanPose");
         _effectProperty = serializedObject.FindProperty("_terrainType");
+        _transitionListProperty = serializedObject.FindProperty("_transitionUnitOnHex");
     }
 
     public override void OnInspectorGUI(){
@@ -28,7 +30,7 @@ public class HexManagerEditor : Editor{
         _playerProperty.enumValueIndex = GUILayout.Toolbar(_playerProperty.enumValueIndex, enumList);
         serializedObject.ApplyModifiedProperties();
         if(EditorGUI.EndChangeCheck()){
-            script.ReloadColor();
+            script.ChangeColor();
         }
 
         GUI.enabled = false;
@@ -88,6 +90,13 @@ public class HexManagerEditor : Editor{
         GUILayout.Label("next :", StaticEditor.labelStyle, GUILayout.Width(100));
         EditorGUILayout.ObjectField(script.TargetedUnit, typeof(GameObject), allowSceneObjects: true);
         GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("next :", StaticEditor.labelStyle, GUILayout.Width(100));
+        EditorGUILayout.PropertyField(_transitionListProperty);
+        serializedObject.ApplyModifiedProperties();
+        GUILayout.EndHorizontal();
+
         GUI.enabled = true;
         GUILayout.EndVertical();
         #endregion UnitInfo

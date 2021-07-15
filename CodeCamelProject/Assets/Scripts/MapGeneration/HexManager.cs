@@ -27,7 +27,8 @@ namespace Map
         private GameObject _unitOnHex = null;
         [Tooltip("The Unit who will come to this Hex")]
         private GameObject _targetedUnit = null;
-
+        [Tooltip("The actual Unit on this Hex")]
+        [SerializeField] private List<GameObject> _transitionUnitOnHex = new List<GameObject>();
 
         //PUBLIC VARIABLES
         public PlayerSide PlayerCanPose { get => _playerCanPose; }
@@ -68,20 +69,34 @@ namespace Map
         /// </summary>
         /// <param name="unit"></param>
         /// <param name="lastHex"></param>
-        public void AddUnitToTerrain(GameObject unit, GameObject lastHex){
-            if(lastHex != this.gameObject){
+        public void AddUnitToTerrain(GameObject unit){
                 _unitOnHex = unit;
                 _targetedUnit = unit;
-                if(lastHex != null) lastHex.GetComponent<HexManager>().RemoveUnit();
-                unit.GetComponent<Unit.Movement>().HexUnderUnit = this.gameObject;
-            }
         }
 
         /// <summary>
         /// Remove the actual Unit on the terrain
         /// </summary>
-        public void RemoveUnit(){
+        public void RemoveUnit(bool targetHex = false){
             _unitOnHex = null;
+            if(targetHex) _targetedUnit = null;
+        }
+
+        /// <summary>
+        /// Add a moving unit on this tile
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="lastMovingCylinder"></param>
+        public void AddMovingUnit(GameObject unit){
+            _transitionUnitOnHex.Add(unit);
+        }
+
+        /// <summary>
+        /// Remove a moving unit
+        /// </summary>
+        /// <param name="unit"></param>
+        public void RemoveMovingUnit(GameObject unit){
+            if(_transitionUnitOnHex.Contains(unit)) _transitionUnitOnHex.Remove(unit);
         }
         #endregion UnitOnTerrain
 
@@ -89,17 +104,22 @@ namespace Map
         /// <summary>
         /// Change the color of the hex
         /// </summary>
-        public void ReloadColor(){
-            switch(_playerCanPose){
-                case PlayerSide.None:
-                    GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/White.mat", typeof(Material));
-                    break;
-                case PlayerSide.RedPlayer:
-                    GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/RedHex.mat", typeof(Material));
-                    break;
-                case PlayerSide.BluePlayer:
-                    GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/BlueHex.mat", typeof(Material));
-                    break;
+        public void ChangeColor(Material mat = null){
+            if(mat == null){
+                switch(_playerCanPose){
+                    case PlayerSide.None:
+                        GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/White.mat", typeof(Material));
+                        break;
+                    case PlayerSide.RedPlayer:
+                        GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/RedHex.mat", typeof(Material));
+                        break;
+                    case PlayerSide.BluePlayer:
+                        GetComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/BlueHex.mat", typeof(Material));
+                        break;
+                }
+            }
+            else{
+                GetComponent<MeshRenderer>().sharedMaterial = mat;
             }
         }
 #endif
