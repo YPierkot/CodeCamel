@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Unit{
     [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter))]
@@ -17,6 +18,10 @@ namespace Unit{
         [SerializeField] private float _unitLife = 0f;
         [Tooltip("Actual Mana of this Unit")]
         [SerializeField] private float _manaGain = 0f;
+        [Tooltip("GameObject for the life of the Unit")]
+        [SerializeField] private GameObject _lifeGam = null;
+        [Tooltip("GameObject for the mana of the Unit")]
+        [SerializeField] private GameObject _manaGam = null;
 
         //PUBLIC VARIABLES
         public EnumScript.PlayerSide Player => _player;
@@ -55,6 +60,7 @@ namespace Unit{
         /// <param name="damage"></param>
         public void TakeDamage(int damage){
             _unitLife -= damage;
+            _lifeGam.GetComponent<Image>().fillAmount = _unitLife / _unitScriptable.GetStat()._life;
         }
 
         /// <summary>
@@ -63,6 +69,7 @@ namespace Unit{
         /// <param name="mana"></param>
         public void AddMana(float mana){
             _manaGain += mana;
+            _manaGam.GetComponent<Image>().fillAmount = _manaGain / 10;
         }
         #endregion UnitMethods
 

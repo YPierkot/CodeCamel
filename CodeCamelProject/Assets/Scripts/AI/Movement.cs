@@ -20,9 +20,6 @@ namespace Unit{
         public GameObject HexUnderUnit { get => _hexUnderUnit; }
         public GameObject TargetHex { get => _targetHex; }
         public GameObject NextHex { get => _nextHex; }
-
-
-
         #endregion Variables
 
         public void Update(){

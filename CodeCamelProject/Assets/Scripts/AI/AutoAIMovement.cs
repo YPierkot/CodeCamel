@@ -8,6 +8,8 @@ namespace Unit{
         [ReadOnly, SerializeField] private List<GameObject> _unitList = new List<GameObject>();
         [ReadOnly, SerializeField] private List<GameObject> _runtimeList = new List<GameObject>();
 
+        bool falseT = false;
+
         private void Start(){
             _unitList.AddRange(GameManager.Instance.RedPlayerUnit);
             _unitList.AddRange(GameManager.Instance.BluePlayerUnit);
@@ -34,8 +36,30 @@ namespace Unit{
                     LaunchAutoMovement();
                 }
             }
+
+
+            if(Input.GetKey(KeyCode.T)){
+                falseT = true;
+            }
+
+            if(falseT){
+                int id = Random.Range(0, GameManager.Instance.WolrdGam.transform.childCount);
+                List<int> neighboorIdList = StaticRuntime.GetneighboorFromId(id, GameManager.Instance.WolrdGam.transform.GetChild(id).GetComponent<Map.HexManager>().Line);
+                foreach(int i in neighboorIdList){
+                    if(i < 0 || i > 80){
+                        Debug.LogError(id + " / " + i);
+                    }
+                    else{
+                        Debug.Log(id + " / " + i);
+                    }
+                }
+            }
         }
 
+
+        /// <summary>
+        /// Launch the Automatic Movement for all the units
+        /// </summary>
         void LaunchAutoMovement(){
             _runtimeList.AddRange(_unitList);
             GetComponent<Unit.MovementAIManager>().ResetWorld();

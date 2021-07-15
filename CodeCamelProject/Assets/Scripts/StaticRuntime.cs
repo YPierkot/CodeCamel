@@ -29,10 +29,10 @@ public static class StaticRuntime
     /// </summary>
     /// <param name="baseCylinder"></param>
     /// <returns></returns>
-    public static List<GameObject> getNeighboorList(GameObject baseCylinder = null, GameObject baseUnit = null){
-        int id = baseCylinder == null? baseUnit.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id : baseCylinder.GetComponent<Map.HexManager>().Id;
+    public static List<GameObject> getNeighboorList(GameObject baseCylinder){
+        int id = baseCylinder.GetComponent<Map.HexManager>().Id;
 
-        List<int> neighboorIdList = GetneighboorFromId(id, baseCylinder == null ? baseUnit.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Line : baseCylinder.GetComponent<Map.HexManager>().Line);
+        List<int> neighboorIdList = GetneighboorFromId(id, baseCylinder.GetComponent<Map.HexManager>().Line);
 
         List<GameObject> neighboorListGam = new List<GameObject>();
         for(int i = 0; i < neighboorIdList.Count; i++){
@@ -90,7 +90,7 @@ public static class StaticRuntime
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    static List<int> GetneighboorFromId(int id, int line){
+    public static List<int> GetneighboorFromId(int id, int line){
         List<int> neighboorIdList = new List<int>();
 
         int ySize = GameManager.Instance.WolrdGam.GetComponent<Map.MapGeneration>().YSize;
@@ -118,7 +118,7 @@ public static class StaticRuntime
                     neighboorIdList.Add(id + 8); //HAUT DROITE
                     neighboorIdList.Add(id - 1); //DROITE
                 }
-                if(id == (xSize * ySize) - 1){
+                else if(id == (xSize * ySize) - 1){
                     neighboorIdList.Add(id - 1); //DROITE
                     neighboorIdList.Add(id - 10); //BAS DROITE
                     neighboorIdList.Add(id - 9); //BAS GAUCHE
