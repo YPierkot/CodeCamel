@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unit{
+namespace AI{
     public class MovementAIManager : MonoSingleton<MovementAIManager>{
         private void Update(){
             if(Input.GetKeyDown(KeyCode.E)){
@@ -27,6 +27,7 @@ namespace Unit{
             }
 
             for(int i = 0; i < GameManager.Instance.RedPlayerUnit.Count; i++){
+                GameManager.Instance.RedPlayerUnit[i].GetComponent<Unit.UnitManager>().ResetData();
                 GameManager.Instance.RedPlayerUnit[i].GetComponent<Unit.Movement>().StopAllCoroutines();
                 GameManager.Instance.RedPlayerUnit[i].GetComponent<Unit.Movement>().ChangeHexUnderUnit();
                 GameManager.Instance.RedPlayerUnit[i].GetComponent<Unit.Movement>().settargetData(null, null);
@@ -46,6 +47,7 @@ namespace Unit{
             }
 
             for(int i = 0; i < GameManager.Instance.BluePlayerUnit.Count; i++){
+                GameManager.Instance.BluePlayerUnit[i].GetComponent<Unit.UnitManager>().ResetData();
                 GameManager.Instance.BluePlayerUnit[i].GetComponent<Unit.Movement>().StopAllCoroutines();
                 GameManager.Instance.BluePlayerUnit[i].GetComponent<Unit.Movement>().ChangeHexUnderUnit();
                 GameManager.Instance.RedPlayerUnit[i].GetComponent<Unit.Movement>().settargetData(null, null);
@@ -91,34 +93,36 @@ namespace Unit{
         /// <param name="ennemyList"></param>
         /// <returns></returns>
         IEnumerator SetTargetToUnit(List<GameObject> gamList, List<GameObject> ennemyList){
-            foreach(GameObject gam in gamList){
-                //get the closest Unit
-                ClosestGam closestUnit = StaticRuntime.getClosestGameObject(ennemyList, gam);
-                //Get the closest Hex
-                ClosestGam closestHex = StaticRuntime.getClosestFreeHex(StaticRuntime.getNeighboorListAtRange(closestUnit.closestGameObject, (int) gam.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._attackRange), gam);
+            if(gamList.Count != 0 && ennemyList.Count != 0){
+                foreach(GameObject gam in gamList){
+                    //get the closest Unit
+                    ClosestGam closestUnit = StaticRuntime.getClosestGameObject(ennemyList, gam);
+                    //Get the closest Hex
+                    ClosestGam closestHex = StaticRuntime.getClosestFreeHex(StaticRuntime.getNeighboorListAtRange(closestUnit.closestGameObject.GetComponent<Unit.Movement>().HexUnderUnit, (int)gam.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._attackRange), gam);
 
-                List<GameObject> ennemyUnit = new List<GameObject>();
-                ennemyUnit.AddRange(ennemyList);
+                    List<GameObject> ennemyUnit = new List<GameObject>();
+                    ennemyUnit.AddRange(ennemyList);
 
-                while(closestHex.closestGameObject == null){
-                    ennemyUnit.Remove(closestUnit.closestGameObject);
-                    if(ennemyUnit.Count == 0){
-                        StartCoroutine(SetTargetToUnit(new List<GameObject> { gam }, ennemyList));
-                        break;
+                    while(closestHex.closestGameObject == null){
+                        ennemyUnit.Remove(closestUnit.closestGameObject);
+                        if(ennemyUnit.Count == 0){
+                            StartCoroutine(SetTargetToUnit(new List<GameObject> { gam }, ennemyList));
+                            break;
+                        }
+                        closestUnit = StaticRuntime.getClosestGameObject(ennemyUnit, gam);
+                        closestHex = StaticRuntime.getClosestFreeHex(StaticRuntime.getNeighboorListAtRange(closestUnit.closestGameObject.GetComponent<Unit.Movement>().HexUnderUnit, (int)gam.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._attackRange), gam);
                     }
-                    closestUnit = StaticRuntime.getClosestGameObject(ennemyUnit, gam);
-                    closestHex = StaticRuntime.getClosestFreeHex(StaticRuntime.getNeighboorListAtRange(closestUnit.closestGameObject, (int)gam.GetComponent<Unit.UnitManager>()._unitScriptable.GetStat()._attackRange), gam);
-                }
 
-                if(closestHex.closestGameObject != null){
-                    gam.GetComponent<Unit.Movement>().settargetData(closestUnit.closestGameObject, closestHex.closestGameObject, true);
-                }
-                else{
-                    StartCoroutine(SetTargetToUnit(new List<GameObject> { gam }, ennemyList));
-                    Debug.LogError("There is no place for this Unit");
-                }
+                    if(closestHex.closestGameObject != null){
+                        gam.GetComponent<Unit.Movement>().settargetData(closestUnit.closestGameObject, closestHex.closestGameObject, true);
+                    }
+                    else{
+                        StartCoroutine(SetTargetToUnit(new List<GameObject> { gam }, ennemyList));
+                        Debug.LogError("There is no place for this Unit");
+                    }
 
-                yield return new WaitForSeconds(.01f);
+                    yield return new WaitForSeconds(.01f);
+                }
             }
         }
 

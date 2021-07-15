@@ -66,8 +66,10 @@ namespace Unit{
                 _targetHex.GetComponent<Map.HexManager>().ChangeColor();
                 _targetHex = null;
                 _nextHex = null;
+
+                GetComponent<Unit.Attack>().LaunchAttack(_targetUnit);
             }
-            //If close to the unit
+            //If close to the next hex
             else if(Mathf.Abs(Vector3.Distance(new Vector3(_nextHex.transform.position.x, transform.position.y, _nextHex.transform.position.z), this.transform.position)) <= 0.07f)
             {
                 //Reset Target Data
@@ -76,8 +78,8 @@ namespace Unit{
                 _targetHex = null;
 
                 //Ask for a new target
-                if(GetComponent<Unit.UnitManager>().Player == EnumScript.PlayerSide.RedPlayer) Unit.MovementAIManager.Instance.SetRedUnitTarget(this.gameObject);
-                else Unit.MovementAIManager.Instance.SetBlueUnitTarget(this.gameObject);
+                if(GetComponent<Unit.UnitManager>().Player == EnumScript.PlayerSide.RedPlayer) AI.MovementAIManager.Instance.SetRedUnitTarget(this.gameObject);
+                else AI.MovementAIManager.Instance.SetBlueUnitTarget(this.gameObject);
             }
         }
         #endregion Movement
@@ -95,13 +97,23 @@ namespace Unit{
             _nextHex = null;
 
             //Change TargetData
-            _targetUnit = targetUnit;
-            _targetHex = targetHex;
-            if(_targetHex != null) _targetHex.GetComponent<Map.HexManager>().TargetedUnit = this.gameObject;
-            if(_targetHex != null) _targetHex.GetComponent<Map.HexManager>().ChangeColor((Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/GoldHex.mat", typeof(Material)));
+            if(_hexUnderUnit != null && targetHex == _hexUnderUnit){
+                _hexUnderUnit.GetComponent<Map.HexManager>().AddUnitToTerrain(this.gameObject);
+                _hexUnderUnit.GetComponent<Map.HexManager>().ChangeColor();
+                _targetHex = null;
+                _nextHex = null;
 
-            //Find the nearest Hex
-            if(SearchNearestHex) SetNextHexDir();
+                GetComponent<Unit.Attack>().LaunchAttack(_targetUnit);
+            }
+            else{
+                _targetUnit = targetUnit;
+                _targetHex = targetHex;
+                if(_targetHex != null) _targetHex.GetComponent<Map.HexManager>().TargetedUnit = this.gameObject;
+                if(_targetHex != null) _targetHex.GetComponent<Map.HexManager>().ChangeColor((Material)AssetDatabase.LoadAssetAtPath("Assets/AssetData/Materials/GoldHex.mat", typeof(Material)));
+
+                //Find the nearest Hex
+                if(SearchNearestHex) SetNextHexDir();
+            }
         }
 
         /// <summary>
@@ -132,10 +144,10 @@ namespace Unit{
             //If can't move to the next target. The unit will get all neighboor and go to the closest one of the target hex
             if(NextGam == null) return;
             while(_nextHex == null){
-                List<GameObject> _nextHexNeighboor = StaticRuntime.getNeighboorList(NextGam);
+                List<GameObject> _nextHexNeighboor = StaticRuntime.getNeighboorListAtRange(NextGam);
 
                 if(HexUnderUnit != null){
-                    List<GameObject> thisNeighboorList = StaticRuntime.getNeighboorList(HexUnderUnit);
+                    List<GameObject> thisNeighboorList = StaticRuntime.getNeighboorListAtRange(HexUnderUnit);
 
                     List<GameObject> neighboorInCommonList = new List<GameObject>();
 

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-namespace Unit{
+namespace AI{
     public class AutoAIMovement : MonoBehaviour{
+#if UNITY_EDITOR
         [ReadOnly, SerializeField] private bool _autoMovement = false;
         [ReadOnly, SerializeField] private List<GameObject> _unitList = new List<GameObject>();
         [ReadOnly, SerializeField] private List<GameObject> _runtimeList = new List<GameObject>();
@@ -14,14 +16,15 @@ namespace Unit{
             _unitList.AddRange(GameManager.Instance.RedPlayerUnit);
             _unitList.AddRange(GameManager.Instance.BluePlayerUnit);
         }
-
         private void Update(){
             //Launch Auto Movement
             if(Input.GetKeyDown(KeyCode.R)){
-                _runtimeList.Clear();
                 _autoMovement = !_autoMovement;
+                LaunchAutoMovement();
             }
 
+            //Ai for the movement
+            /*
             if(_autoMovement){
                 if(_runtimeList.Count != 0){
                     for(int i = 0; i < _runtimeList.Count; i++){
@@ -33,6 +36,16 @@ namespace Unit{
                     }
                 }
                 else{
+                    _runtimeList.Clear();
+                    LaunchAutoMovement();
+                    _runtimeList.AddRange(_unitList);
+                }
+            }
+*/
+
+            //Ai for the Attack
+            if(_autoMovement){
+                if(GameManager.Instance.RedPlayerUnit.Count == 0 || GameManager.Instance.BluePlayerUnit.Count == 0){
                     LaunchAutoMovement();
                 }
             }
@@ -56,15 +69,27 @@ namespace Unit{
             }
         }
 
-
         /// <summary>
         /// Launch the Automatic Movement for all the units
         /// </summary>
         void LaunchAutoMovement(){
-            _runtimeList.AddRange(_unitList);
-            GetComponent<Unit.MovementAIManager>().ResetWorld();
-            GetComponent<Unit.MovementAIManager>().SetRedUnitTarget();
-            GetComponent<Unit.MovementAIManager>().SetBlueUnitTarget();
+            foreach(GameObject unit in _unitList){
+                if(unit.GetComponent<Unit.UnitManager>().Player == EnumScript.PlayerSide.RedPlayer){
+                    if(!GameManager.Instance.RedPlayerUnit.Contains(unit)){
+                        GameManager.Instance.RedPlayerUnit.Add(unit);
+                    }
+                }
+                else{
+                    if(!GameManager.Instance.BluePlayerUnit.Contains(unit)){
+                        GameManager.Instance.BluePlayerUnit.Add(unit);
+                    }
+                }
+            }
+
+            GetComponent<AI.MovementAIManager>().ResetWorld();
+            GetComponent<AI.MovementAIManager>().SetRedUnitTarget();
+            GetComponent<AI.MovementAIManager>().SetBlueUnitTarget();
         }
     }
+#endif
 }

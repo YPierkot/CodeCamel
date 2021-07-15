@@ -51,6 +51,15 @@ namespace Unit{
                 GetComponent<MeshCollider>().sharedMesh = null;
             }
         }
+
+        /// <summary>
+        /// Reset all runtimeData for this Unit
+        /// </summary>
+        public void ResetData(){
+            _unitLife = _unitScriptable.GetStat()._life;
+            _lifeGam.GetComponent<Image>().fillAmount = _unitLife / _unitScriptable.GetStat()._life;
+
+        }
         #endregion Data
 
         #region UnitMethods
@@ -61,6 +70,14 @@ namespace Unit{
         public void TakeDamage(int damage){
             _unitLife -= damage;
             _lifeGam.GetComponent<Image>().fillAmount = _unitLife / _unitScriptable.GetStat()._life;
+            if(_unitLife <= 0){
+                if(_player == EnumScript.PlayerSide.RedPlayer) GameManager.Instance.RedPlayerUnit.Remove(this.gameObject);
+                else GameManager.Instance.BluePlayerUnit.Remove(this.gameObject);
+
+                GetComponent<Unit.Attack>().StopAttack();
+
+                transform.position += new Vector3(0, -10, 0);
+            }
         }
 
         /// <summary>

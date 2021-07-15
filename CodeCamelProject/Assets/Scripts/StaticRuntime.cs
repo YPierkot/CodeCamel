@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 using System.Collections.Generic;
-using Unit;
+using AI;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,27 +29,9 @@ public static class StaticRuntime
     /// </summary>
     /// <param name="baseCylinder"></param>
     /// <returns></returns>
-    public static List<GameObject> getNeighboorList(GameObject baseCylinder){
-        int id = baseCylinder.GetComponent<Map.HexManager>().Id;
-
-        List<int> neighboorIdList = GetneighboorFromId(id, baseCylinder.GetComponent<Map.HexManager>().Line);
-
-        List<GameObject> neighboorListGam = new List<GameObject>();
-        for(int i = 0; i < neighboorIdList.Count; i++){
-            neighboorListGam.Add(GameManager.Instance.WolrdGam.transform.GetChild(neighboorIdList[i]).gameObject);
-        }
-
-        return neighboorListGam;
-    }
-
-    /// <summary>
-    /// Get all the neighboor from a hex
-    /// </summary>
-    /// <param name="baseCylinder"></param>
-    /// <returns></returns>
-    public static List<GameObject> getNeighboorListAtRange(GameObject baseCylinder, int range){
+    public static List<GameObject> getNeighboorListAtRange(GameObject baseCylinder, int range = 1){
         int id = 0;
-        if(baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit != null) id = baseCylinder.GetComponent<Unit.Movement>().HexUnderUnit.GetComponent<Map.HexManager>().Id;
+        if(baseCylinder != null) id = baseCylinder.GetComponent<Map.HexManager>().Id;
         else return null;
 
         List<int> finalList = new List<int>();
@@ -64,7 +46,6 @@ public static class StaticRuntime
             lastListGet.Clear();
             foreach(int idH in rememberLastList){
                 actualList.Clear();
-                Debug.Log(idH);
                 actualList = GetneighboorFromId(idH, GameManager.Instance.WolrdGam.transform.GetChild(idH).GetComponent<Map.HexManager>().Line);
                 foreach(int idL in actualList){
                     if(!finalList.Contains(idL))
